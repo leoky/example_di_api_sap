@@ -29,3 +29,8 @@ C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAP
 C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.SalesOrder.resources
 C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseCustomer.resources
 C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseItem.resources
+D:\SAP\Project 2 Minggu\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\Interop.SAPbobsCOM.dll
+D:\SAP\Project 2 Minggu\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.vbproj.ResolveComReference.cache
+D:\SAP\Project 2 Minggu\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.exe
+D:\SAP\Project 2 Minggu\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.xml
+D:\SAP\Project 2 Minggu\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.pdb

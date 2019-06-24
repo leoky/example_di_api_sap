@@ -1,5 +1,5 @@
 ﻿Public Class ChooseCompany
-
+    '//coba aja
     '//object variabel
     Private oRecordSet As SAPbobsCOM.Recordset
 
