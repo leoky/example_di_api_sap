@@ -36,4 +36,8 @@
     Private Sub btnSalesOrder_Click(sender As System.Object, e As System.EventArgs) Handles btnSalesOrder.Click
         SalesOrder.ShowDialog()
     End Sub
+
+    Private Sub btnUDF_Click(sender As System.Object, e As System.EventArgs) Handles btnUDF.Click
+        UDFData.ShowDialog()
+    End Sub
 End Class

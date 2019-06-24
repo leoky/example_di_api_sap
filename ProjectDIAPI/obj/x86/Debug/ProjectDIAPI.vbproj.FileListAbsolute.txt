@@ -34,3 +34,21 @@ D:\SAP\Project 2 Minggu\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIA
 D:\SAP\Project 2 Minggu\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.exe
 D:\SAP\Project 2 Minggu\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.xml
 D:\SAP\Project 2 Minggu\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.pdb
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\Interop.SAPbobsCOM.dll
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.vbproj.ResolveComReference.cache
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.exe
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.xml
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.pdb
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\bin\Debug\ProjectDIAPI.exe
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\bin\Debug\ProjectDIAPI.pdb
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\bin\Debug\ProjectDIAPI.xml
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.BPMasterData.resources
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseCompany.resources
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ItemMasterData.resources
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.SalesOrder.resources
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.Main.resources
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.Resources.resources
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseCustomer.resources
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseItem.resources
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.vbproj.GenerateResource.Cache
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.UDFData.resources

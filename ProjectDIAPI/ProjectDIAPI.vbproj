@@ -97,6 +97,12 @@
     <Compile Include="Form\SalesOrder.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\UDFData.Designer.vb">
+      <DependentUpon>UDFData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\UDFData.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\SalesOrder.resx">
       <DependentUpon>SalesOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\UDFData.resx">
+      <DependentUpon>UDFData.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>

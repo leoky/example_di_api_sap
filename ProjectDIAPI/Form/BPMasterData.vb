@@ -152,4 +152,7 @@
         End If
     End Sub
 
+    Private Sub ComboBoxBPType_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ComboBoxBPType.SelectedIndexChanged
+
+    End Sub
 End Class
