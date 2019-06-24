@@ -1,0 +1,6 @@
+ProjectDIAPI/bin
+ProjectDIAPI/obj
+*.user
+*.suo
+_ReSharper.*
+*.sln.cache
