@@ -34,13 +34,13 @@ Partial Class SalesOrder
         Me.DateTimePickerDocDate = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePickerDocDueDate = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePickerTaxDate = New System.Windows.Forms.DateTimePicker()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnCancel = New System.Windows.Forms.Button()
         Me.BtnOK = New System.Windows.Forms.Button()
         Me.btnFind = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnPrevious = New System.Windows.Forms.Button()
+        Me.btnNext = New System.Windows.Forms.Button()
         Me.DataGridView = New System.Windows.Forms.DataGridView()
         Me.ItemCode = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -49,6 +49,8 @@ Partial Class SalesOrder
         Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TextBoxDocNumber = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TextBoxDocTotal = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -170,19 +172,19 @@ Partial Class SalesOrder
         Me.DateTimePickerTaxDate.TabIndex = 77
         Me.DateTimePickerTaxDate.Value = New Date(2019, 6, 22, 23, 37, 16, 0)
         '
-        'Button2
+        'btnCancel
         '
-        Me.Button2.Location = New System.Drawing.Point(108, 517)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(93, 32)
-        Me.Button2.TabIndex = 86
-        Me.Button2.Text = "Cancel"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnCancel.Location = New System.Drawing.Point(111, 621)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(93, 32)
+        Me.btnCancel.TabIndex = 86
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.UseVisualStyleBackColor = True
         '
         'BtnOK
         '
-        Me.BtnOK.Location = New System.Drawing.Point(4, 517)
+        Me.BtnOK.Location = New System.Drawing.Point(12, 621)
         Me.BtnOK.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.BtnOK.Name = "BtnOK"
         Me.BtnOK.Size = New System.Drawing.Size(93, 32)
@@ -220,25 +222,25 @@ Partial Class SalesOrder
         Me.btnAdd.Text = "Add"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
-        'Button1
+        'btnPrevious
         '
-        Me.Button1.Location = New System.Drawing.Point(651, 27)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(33, 25)
-        Me.Button1.TabIndex = 90
-        Me.Button1.Text = "<"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnPrevious.Location = New System.Drawing.Point(651, 27)
+        Me.btnPrevious.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnPrevious.Name = "btnPrevious"
+        Me.btnPrevious.Size = New System.Drawing.Size(33, 25)
+        Me.btnPrevious.TabIndex = 90
+        Me.btnPrevious.Text = ">"
+        Me.btnPrevious.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btnNext
         '
-        Me.Button4.Location = New System.Drawing.Point(689, 27)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(35, 25)
-        Me.Button4.TabIndex = 91
-        Me.Button4.Text = ">"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnNext.Location = New System.Drawing.Point(610, 27)
+        Me.btnNext.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnNext.Name = "btnNext"
+        Me.btnNext.Size = New System.Drawing.Size(35, 25)
+        Me.btnNext.TabIndex = 91
+        Me.btnNext.Text = "<"
+        Me.btnNext.UseVisualStyleBackColor = True
         '
         'DataGridView
         '
@@ -247,7 +249,7 @@ Partial Class SalesOrder
         Me.DataGridView.Location = New System.Drawing.Point(12, 248)
         Me.DataGridView.Name = "DataGridView"
         Me.DataGridView.RowTemplate.Height = 24
-        Me.DataGridView.Size = New System.Drawing.Size(971, 246)
+        Me.DataGridView.Size = New System.Drawing.Size(912, 246)
         Me.DataGridView.TabIndex = 92
         '
         'ItemCode
@@ -301,20 +303,38 @@ Partial Class SalesOrder
         Me.TextBoxDocNumber.Size = New System.Drawing.Size(130, 22)
         Me.TextBoxDocNumber.TabIndex = 94
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(543, 517)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(40, 17)
+        Me.Label8.TabIndex = 95
+        Me.Label8.Text = "Total"
+        '
+        'TextBoxDocTotal
+        '
+        Me.TextBoxDocTotal.Location = New System.Drawing.Point(610, 517)
+        Me.TextBoxDocTotal.Name = "TextBoxDocTotal"
+        Me.TextBoxDocTotal.Size = New System.Drawing.Size(314, 22)
+        Me.TextBoxDocTotal.TabIndex = 96
+        '
         'SalesOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(987, 560)
+        Me.ClientSize = New System.Drawing.Size(956, 664)
+        Me.Controls.Add(Me.TextBoxDocTotal)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.TextBoxDocNumber)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.DataGridView)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.btnPrevious)
+        Me.Controls.Add(Me.btnNext)
         Me.Controls.Add(Me.btnFind)
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.btnAdd)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.BtnOK)
         Me.Controls.Add(Me.DateTimePickerTaxDate)
         Me.Controls.Add(Me.DateTimePickerDocDueDate)
@@ -348,13 +368,13 @@ Partial Class SalesOrder
     Friend WithEvents DateTimePickerDocDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents DateTimePickerDocDueDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents DateTimePickerTaxDate As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents BtnOK As System.Windows.Forms.Button
     Friend WithEvents btnFind As System.Windows.Forms.Button
     Friend WithEvents btnUpdate As System.Windows.Forms.Button
     Friend WithEvents btnAdd As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents btnPrevious As System.Windows.Forms.Button
+    Friend WithEvents btnNext As System.Windows.Forms.Button
     Friend WithEvents DataGridView As System.Windows.Forms.DataGridView
     Friend WithEvents ItemCode As System.Windows.Forms.DataGridViewButtonColumn
     Friend WithEvents ItemName As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -363,4 +383,6 @@ Partial Class SalesOrder
     Friend WithEvents Total As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents TextBoxDocNumber As System.Windows.Forms.TextBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents TextBoxDocTotal As System.Windows.Forms.TextBox
 End Class

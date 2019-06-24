@@ -25,6 +25,7 @@
             Dim row = Me.DataGridView.Rows(e.RowIndex)
             data.ItemCode = row.Cells(0).Value.ToString
             data.ItemName = row.Cells(1).Value.ToString
+            'data.PriceList.Price = rec.Fields.Item(data.PriceList.Price).Value
         End If
     End Sub
 
@@ -49,9 +50,5 @@
 
     Private Sub btnChoose_Click(sender As System.Object, e As System.EventArgs) Handles btnChoose.Click
         Me.Close()
-    End Sub
-
-    Private Sub DataGridView_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellContentClick
-
     End Sub
 End Class

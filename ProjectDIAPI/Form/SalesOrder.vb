@@ -1,12 +1,13 @@
 ﻿Public Class SalesOrder
 
-    Dim so As SAPbobsCOM.Documents
+    Dim oOrder As SAPbobsCOM.Documents
     Private mode As Integer
+    Dim docTotal
 
     Private Sub SalesOrder_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        so = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oOrders)
+
         rec = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
-        recTemp = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
+        oOrder = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oOrders)
 
         DateTimePickerDocDate.Value = Now
         DateTimePickerDocDueDate.Value = Now
@@ -17,15 +18,38 @@
         refreshFromDb()
     End Sub
 
+    'method utk bersihakn textfield dan reset ke default
     Private Sub clearAll()
         TextBoxBPCode.Clear()
         TextBoxBPName.Clear()
+        TextBoxDocNumber.Clear()
+        TextBoxDocTotal.Clear()
 
         DateTimePickerDocDate.Value = Now
         DateTimePickerDocDueDate.Value = Now
         DateTimePickerTaxDate.Value = Now
 
         DataGridView.Rows.Clear()
+    End Sub
+
+    Private Sub getData()
+        oOrder.CardCode = TextBoxBPCode.Text
+        oOrder.CardName = TextBoxBPName.Text
+        oOrder.DocDate = DateTimePickerDocDate.Value
+        oOrder.DocDueDate = DateTimePickerDocDueDate.Value
+        oOrder.TaxDate = DateTimePickerTaxDate.Value
+
+        For i As Integer = 0 To DataGridView.Rows.Count - 1
+            If DataGridView.Rows(i).Cells(0).Value Then
+                oOrder.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
+                oOrder.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
+                oOrder.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
+                oOrder.Lines.Price = DataGridView.Rows(i).Cells(3).Value
+                oOrder.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
+                oOrder.Lines.Add()
+            End If
+        Next
+        oOrder.DocTotal = TextBoxDocTotal.Text
     End Sub
 
     Private Sub updateMode(mode As Integer, Optional clear As Boolean = True)
@@ -61,28 +85,45 @@
                 BtnOK.Text = "Ok"
                 btnAdd.Enabled = True
                 btnFind.Enabled = True
+                btnUpdate.Enabled = True
         End Select
     End Sub
 
     Private Sub refreshFromDb()
         rec.DoQuery("select * from ORDR order by DocEntry desc")
+        oOrder.Browser.Recordset = rec
     End Sub
 
     Private Sub updatenextprevious()
-        Button4.Enabled = Not rec.EoF
-        Button1.Enabled = Not rec.BoF
+        btnNext.Enabled = Not oOrder.Browser.EoF
+        btnPrevious.Enabled = Not oOrder.Browser.BoF
     End Sub
 
-    Private Sub addData(rec As SAPbobsCOM.Recordset)
-        TextBoxDocNumber.Text = rec.Fields.Item(0).Value
-        TextBoxBPCode.Text = rec.Fields.Item(1).Value
-        TextBoxBPName.Text = rec.Fields.Item(2).Value
+    Private Sub addData()
+        TextBoxDocNumber.Text = oOrder.DocNum
+        TextBoxBPCode.Text = oOrder.CardCode
+        TextBoxBPName.Text = oOrder.CardName
+        TextBoxDocTotal.Text = oOrder.DocTotal
+        DateTimePickerDocDate.Value = oOrder.DocDate
+        DateTimePickerDocDueDate.Value = oOrder.DocDueDate
+        DateTimePickerTaxDate.Value = oOrder.TaxDate
 
-        DateTimePickerDocDate.Value = rec.Fields.Item(3).Value
-        DateTimePickerDocDate.Value = rec.Fields.Item(3).Value
-        DateTimePickerDocDueDate.Value = rec.Fields.Item(3).Value
+        For i As Integer = 0 To oOrder.Lines.Count - 1
 
+            DataGridView.Rows(i).Cells(0).Value = oOrder.Lines.ItemCode
+            DataGridView.Rows(i).Cells(1).Value = oOrder.Lines.ItemDescription
+            DataGridView.Rows(i).Cells(2).Value = oOrder.Lines.Quantity
+            DataGridView.Rows(i).Cells(3).Value = oOrder.Lines.Price
+            DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.LineTotal
+            DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.Quantity * oOrder.Lines.Price
+        Next
+    End Sub
 
+    Private Sub calTotal()
+        docTotal = 0
+        For i As Integer = 0 To DataGridView.Rows.Count - 1
+            docTotal = docTotal + DataGridView.Rows(i).Cells(4).Value
+        Next
     End Sub
 
     Private Sub btnFind_Click(sender As System.Object, e As System.EventArgs) Handles btnFind.Click
@@ -97,26 +138,28 @@
         updateMode(3, False)
     End Sub
 
-    Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
+    Private Sub btnCancel_Click(sender As System.Object, e As System.EventArgs) Handles btnCancel.Click
         clearAll()
         Me.Close()
     End Sub
 
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+    Private Sub btnPrevious_Click(sender As System.Object, e As System.EventArgs) Handles btnPrevious.Click
         updatenextprevious()
-        If rec.BoF = False Then
-            rec.MovePrevious()
-            addData(rec)
+        If oOrder.Browser.BoF = False Then
+            updateMode(0, False)
+            oOrder.Browser.MovePrevious()
+            addData()
         End If
     End Sub
 
 
 
-    Private Sub Button4_Click(sender As System.Object, e As System.EventArgs) Handles Button4.Click
+    Private Sub btnNext_Click(sender As System.Object, e As System.EventArgs) Handles btnNext.Click
         updatenextprevious()
-        If rec.EoF = False Then
-            addData(rec)
-            rec.MoveNext()
+        If oOrder.Browser.EoF = False Then
+            updateMode(0, False)
+            addData()
+            oOrder.Browser.MoveNext()
         End If
     End Sub
 
@@ -128,32 +171,35 @@
     End Sub
 
     Private Sub BtnOK_Click(sender As System.Object, e As System.EventArgs) Handles BtnOK.Click
-        Dim oOrder As SAPbobsCOM.Documents = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oOrders)
 
         Try
-            oOrder.CardCode = TextBoxBPCode.Text
-            oOrder.CardName = TextBoxBPName.Text
-            oOrder.DocTotal = 0
-            oOrder.DocDate = DateTimePickerDocDate.Value
-            oOrder.DocDueDate = DateTimePickerDocDueDate.Value
+            Select Case mode
+                Case 1
+                    getData()
+                    oOrder.Add()
+                    errorBox()
+                    clearAll()
+                    refreshFromDb()
+                Case 2
+                    oOrder.GetByKey(TextBoxDocNumber.Text)
+                    addData()
+                    errorBox()
+                Case 3
+                    oOrder.GetByKey(TextBoxDocNumber.Text)
+                    getData()
+                    oOrder.Update()
+                    errorBox()
+                    updateMode(0, False)
+                    refreshFromDb()
+                Case Else
+                    Me.Close()
+            End Select
 
-            For i As Integer = 0 To DataGridView.Rows.Count - 1
-                If DataGridView.Rows(i).Cells(0).Value Then
-                    oOrder.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
-                    oOrder.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
-                    oOrder.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
-                    oOrder.Lines.Price = DataGridView.Rows(i).Cells(3).Value
-                    oOrder.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
-                    oOrder.DocTotal = oOrder.DocTotal + DataGridView.Rows(i).Cells(4).Value
-                    oOrder.Lines.Add()
-                End If
-            Next
-            oOrder.Add()
-            errorBox()
-            clearAll()
         Catch ex As Exception
             MsgBox(ex)
         End Try
+
+
     End Sub
 
     Private Sub DataGridView_CellClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellClick
@@ -178,6 +224,11 @@
 
             If row.Cells(2).Value >= 0 And row.Cells(3).Value >= 0 Then
                 row.Cells(4).Value = row.Cells(2).Value * row.Cells(3).Value
+            End If
+
+            If row.Cells(4).Value Then
+                calTotal()
+                TextBoxDocTotal.Text = docTotal
             End If
 
         End If
