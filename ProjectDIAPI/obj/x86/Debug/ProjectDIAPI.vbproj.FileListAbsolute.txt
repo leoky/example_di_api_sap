@@ -52,3 +52,4 @@ D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseCust
 D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseItem.resources
 D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.vbproj.GenerateResource.Cache
 D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.UDFData.resources
+D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.UDTdata.resources

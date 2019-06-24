@@ -40,4 +40,8 @@
     Private Sub btnUDF_Click(sender As System.Object, e As System.EventArgs) Handles btnUDF.Click
         UDFData.ShowDialog()
     End Sub
+
+    Private Sub btnUDT_Click(sender As System.Object, e As System.EventArgs) Handles btnUDT.Click
+        UDTdata.ShowDialog()
+    End Sub
 End Class

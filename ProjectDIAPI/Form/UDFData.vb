@@ -6,6 +6,8 @@
 
         If ComboBoxTable.SelectedIndex = 0 Then
             oUserFieldsMD.TableName = "ORDR"
+        ElseIf ComboBoxTable.SelectedIndex = 1 Then
+            oUserFieldsMD.TableName = "OPOR"
         End If
         oUserFieldsMD.Name = TextBoxUDFName.Text
         oUserFieldsMD.Description = TextBoxUDFDescription.Text

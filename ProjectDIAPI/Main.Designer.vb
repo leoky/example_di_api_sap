@@ -28,6 +28,7 @@ Partial Class Main
         Me.Button2 = New System.Windows.Forms.Button()
         Me.btnItemMasterData = New System.Windows.Forms.Button()
         Me.btnUDF = New System.Windows.Forms.Button()
+        Me.btnUDT = New System.Windows.Forms.Button()
         Me.GroupBoxMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -43,6 +44,7 @@ Partial Class Main
         '
         'GroupBoxMain
         '
+        Me.GroupBoxMain.Controls.Add(Me.btnUDT)
         Me.GroupBoxMain.Controls.Add(Me.btnUDF)
         Me.GroupBoxMain.Controls.Add(Me.btnSalesOrder)
         Me.GroupBoxMain.Controls.Add(Me.Button2)
@@ -95,6 +97,16 @@ Partial Class Main
         Me.btnUDF.Text = "User Define Field"
         Me.btnUDF.UseVisualStyleBackColor = True
         '
+        'btnUDT
+        '
+        Me.btnUDT.Location = New System.Drawing.Point(0, 220)
+        Me.btnUDT.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnUDT.Name = "btnUDT"
+        Me.btnUDT.Size = New System.Drawing.Size(205, 46)
+        Me.btnUDT.TabIndex = 4
+        Me.btnUDT.Text = "User Define Table"
+        Me.btnUDT.UseVisualStyleBackColor = True
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -115,5 +127,6 @@ Partial Class Main
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents btnSalesOrder As System.Windows.Forms.Button
     Friend WithEvents btnUDF As System.Windows.Forms.Button
+    Friend WithEvents btnUDT As System.Windows.Forms.Button
 
 End Class

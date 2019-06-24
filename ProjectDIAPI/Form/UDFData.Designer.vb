@@ -36,7 +36,7 @@ Partial Class UDFData
         'ComboBoxTable
         '
         Me.ComboBoxTable.FormattingEnabled = True
-        Me.ComboBoxTable.Items.AddRange(New Object() {"Sales Order"})
+        Me.ComboBoxTable.Items.AddRange(New Object() {"Sales Order", "Purchase Order"})
         Me.ComboBoxTable.Location = New System.Drawing.Point(103, 27)
         Me.ComboBoxTable.Name = "ComboBoxTable"
         Me.ComboBoxTable.Size = New System.Drawing.Size(121, 21)
