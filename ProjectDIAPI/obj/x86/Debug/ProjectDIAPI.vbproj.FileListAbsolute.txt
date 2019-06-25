@@ -36,3 +36,22 @@ D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseItem
 D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.vbproj.GenerateResource.Cache
 D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.UDFData.resources
 D:\GIT GUD\example_di_api_sap\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.UDTdata.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\Interop.SAPbobsCOM.dll
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.vbproj.ResolveComReference.cache
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\bin\Debug\ProjectDIAPI.exe
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\bin\Debug\ProjectDIAPI.pdb
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\bin\Debug\ProjectDIAPI.xml
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.BPMasterData.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseCompany.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ItemMasterData.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.SalesOrder.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.UDFData.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.UDTdata.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.Main.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.Resources.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseCustomer.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.ChooseItem.resources
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.vbproj.GenerateResource.Cache
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.exe
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.xml
+C:\Users\Leonardy\Documents\Visual Studio 2010\Projects\ProjectDIAPI\ProjectDIAPI\obj\x86\Debug\ProjectDIAPI.pdb
