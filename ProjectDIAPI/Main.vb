@@ -45,8 +45,8 @@
         UDTdata.ShowDialog()
     End Sub
 
-    Private Sub GroupBoxMain_Enter(sender As System.Object, e As System.EventArgs) Handles GroupBoxMain.Enter
-
+    Private Sub btnUDO_Click(sender As System.Object, e As System.EventArgs) Handles btnUDO.Click
+        UDOdata.ShowDialog()
     End Sub
 
     Private Sub btnPurchaseOrder_Click(sender As System.Object, e As System.EventArgs) Handles btnPurchaseOrder.Click

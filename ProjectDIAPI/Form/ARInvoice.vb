@@ -9,7 +9,7 @@
     End Sub
 
     Private Sub addData()
-        TextBoxDocNumber.Text = oInvoice.DocNum
+        TextBoxDocNumber.Text = oInvoice.DocNum '//////
         TextBoxBPCode.Text = oInvoice.CardCode
         TextBoxBPName.Text = oInvoice.CardName
         TextBoxDocTotal.Text = oInvoice.DocTotal
@@ -19,6 +19,8 @@
         DateTimePickerTaxDate.Value = oInvoice.TaxDate
 
         For i As Integer = 0 To oInvoice.Lines.Count - 1
+            DataGridView.Rows.Add(1)
+            oInvoice.Lines.SetCurrentLine(i)
             DataGridView.Rows(i).Cells(0).Value = oInvoice.Lines.ItemCode
             DataGridView.Rows(i).Cells(1).Value = oInvoice.Lines.ItemDescription
             DataGridView.Rows(i).Cells(2).Value = oInvoice.Lines.Quantity
@@ -53,21 +55,14 @@
     End Sub
 
     Private Sub BtnOK_Click(sender As System.Object, e As System.EventArgs) Handles BtnOK.Click
-        'Dim sNewObjCode As String
-
-        ' Get last added document number (the order that was added)
-        'oCompany.GetNewObjectCode(sNewObjCode)
-
-        ' this loop adds the different items to the invoice object
 
         For i As Integer = 0 To DataGridView.Rows.Count - 1
+            oInvoice.Lines.SetCurrentLine(0)
             oInvoice.Lines.BaseEntry = TextBoxDocNumber.Text
             oInvoice.Lines.BaseLine = i
-            'oInvoice.Lines.BaseType = Convert.ToInt32(SAPbobsCOM.BoObjectTypes.oOrders)
-            'MsgBox(oI
-            oInvoice.Lines.Add()
+            oInvoice.Lines.BaseType = SAPbobsCOM.BoObjectTypes.oOrders
         Next
-         
+
         lRetCode = oInvoice.Add()
         oCompany.GetLastError(lErrCode, sErrMsg)
         If lRetCode <> 0 Then ' If the addition failed

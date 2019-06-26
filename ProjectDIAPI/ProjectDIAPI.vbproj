@@ -115,6 +115,12 @@
     <Compile Include="Form\UDFData.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\UDOdata.Designer.vb">
+      <DependentUpon>UDOdata.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\UDOdata.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\UDTdata.Designer.vb">
       <DependentUpon>UDTdata.vb</DependentUpon>
     </Compile>
@@ -184,6 +190,9 @@
     <EmbeddedResource Include="Form\UDFData.resx">
       <DependentUpon>UDFData.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\UDOdata.resx">
+      <DependentUpon>UDOdata.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\UDTdata.resx">
       <DependentUpon>UDTdata.vb</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +229,15 @@
   <ItemGroup>
     <COMReference Include="SAPbobsCOM">
       <Guid>{FC8030BE-F5D2-4B8E-8F92-44228FE30090}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="SAPbouiCOM">
+      <Guid>{6048236A-956D-498D-A6F1-9C81C13AB6E8}</Guid>
       <VersionMajor>9</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
