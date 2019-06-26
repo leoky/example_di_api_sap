@@ -91,6 +91,12 @@
     <Compile Include="Form\ItemMasterData.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\PurchaseOrder.Designer.vb">
+      <DependentUpon>PurchaseOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\PurchaseOrder.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\SalesOrder.Designer.vb">
       <DependentUpon>SalesOrder.vb</DependentUpon>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\ItemMasterData.resx">
       <DependentUpon>ItemMasterData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchaseOrder.resx">
+      <DependentUpon>PurchaseOrder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\SalesOrder.resx">
       <DependentUpon>SalesOrder.vb</DependentUpon>
