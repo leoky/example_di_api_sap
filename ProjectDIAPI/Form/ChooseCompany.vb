@@ -88,7 +88,7 @@
     Private Sub data()
         TextBoxUsernameDb.Text = "sa"
         TextBoxPasswordDb.Text = "sa"
-        TextBoxServerName.Text = "MSI"
+        TextBoxServerName.Text = "DESKTOP-2FI5D08"
         TextBoxUsernameCompany.Text = "manager"
         TextBoxPasswordCompany.Text = "1234"
     End Sub

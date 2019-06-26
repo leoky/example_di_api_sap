@@ -103,6 +103,12 @@
     <Compile Include="Form\UDFData.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\UDOdata.Designer.vb">
+      <DependentUpon>UDOdata.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\UDOdata.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\UDTdata.Designer.vb">
       <DependentUpon>UDTdata.vb</DependentUpon>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\UDFData.resx">
       <DependentUpon>UDFData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\UDOdata.resx">
+      <DependentUpon>UDOdata.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\UDTdata.resx">
       <DependentUpon>UDTdata.vb</DependentUpon>
