@@ -1,21 +1,24 @@
 ﻿Public Class SalesOrder
 
-    Dim oOrder As SAPbobsCOM.Documents
+    'docTotal untuk variabel total transaksi
+    Public oOrder, oOrderTemp As SAPbobsCOM.Documents
     Private mode As Integer
     Dim docTotal
 
     Private Sub SalesOrder_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-
+        'awal ke mode add 
         rec = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
         oOrder = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oOrders)
-
-        DateTimePickerDocDate.Value = Now
-        DateTimePickerDocDueDate.Value = Now
-        DateTimePickerTaxDate.Value = Now
+        oOrderTemp = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oOrders)
 
         updateMode(1)
 
         refreshFromDb()
+
+        TextBoxDocNumber.Text = oOrder.DocNum + 1
+        DateTimePickerDocDate.Value = Now
+        DateTimePickerDocDueDate.Value = Now
+        DateTimePickerTaxDate.Value = Now
     End Sub
 
     'method utk bersihakn textfield dan reset ke default
@@ -33,26 +36,34 @@
     End Sub
 
     Private Sub getData()
-        oOrder.CardCode = TextBoxBPCode.Text
-        oOrder.CardName = TextBoxBPName.Text
-        oOrder.DocDate = DateTimePickerDocDate.Value
-        oOrder.DocDueDate = DateTimePickerDocDueDate.Value
-        oOrder.TaxDate = DateTimePickerTaxDate.Value
-
+        'utk mengambil data dimana untuk dieksekusi ke database
+        ' ini ke db ORDR
+        oOrderTemp.CardCode = TextBoxBPCode.Text
+        oOrderTemp.CardName = TextBoxBPName.Text
+        oOrderTemp.DocDate = DateTimePickerDocDate.Value
+        oOrderTemp.DocDueDate = DateTimePickerDocDueDate.Value
+        oOrderTemp.TaxDate = DateTimePickerTaxDate.Value
+        'utk .lines ini utk ke database RDR1
+        'dimana berisi tentang tiap transaksi dari sales order
         For i As Integer = 0 To DataGridView.Rows.Count - 1
             If DataGridView.Rows(i).Cells(0).Value Then
-                oOrder.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
-                oOrder.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
-                oOrder.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
-                oOrder.Lines.Price = DataGridView.Rows(i).Cells(3).Value
-                oOrder.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
-                oOrder.Lines.Add()
+                oOrderTemp.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
+                oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
+                oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
+                oOrderTemp.Lines.Price = DataGridView.Rows(i).Cells(3).Value
+                oOrderTemp.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
+                oOrderTemp.Lines.Add()
             End If
         Next
-        oOrder.DocTotal = TextBoxDocTotal.Text
+        oOrderTemp.DocTotal = TextBoxDocTotal.Text
     End Sub
 
     Private Sub updateMode(mode As Integer, Optional clear As Boolean = True)
+        'update mode utk ganti kondisi di form ( find,add, update, nothing)
+        ' 1 = add
+        ' 2 = find
+        ' 3 = update
+        ' 0 = nothing 
 
         If clear Then
             clearAll()
@@ -63,6 +74,7 @@
         btnFind.Enabled = False
         btnUpdate.Enabled = True
         TextBoxDocNumber.Enabled = False
+        ComboBoxCopyTo.Enabled = False
 
         '// ketida update mode maka akan ganti button namenya sesuai pilihan
         '// utk case mode find and add itu terbalik 
@@ -73,11 +85,12 @@
                 btnFind.Enabled = True
                 TextBoxDocNumber.Enabled = False
             Case 2
-                btnOk.Text = "Find"
+                BtnOK.Text = "Find"
                 btnAdd.Enabled = True
                 TextBoxDocNumber.Enabled = True
+                ComboBoxCopyTo.Enabled = True
             Case 3
-                btnOk.Text = "Update"
+                BtnOK.Text = "Update"
                 btnAdd.Enabled = True
                 btnFind.Enabled = True
                 btnUpdate.Enabled = False
@@ -86,10 +99,12 @@
                 btnAdd.Enabled = True
                 btnFind.Enabled = True
                 btnUpdate.Enabled = True
+                ComboBoxCopyTo.Enabled = True
         End Select
     End Sub
 
     Private Sub refreshFromDb()
+        'utk mendapatkan data yg terbaru
         rec.DoQuery("select * from ORDR order by DocEntry desc")
         oOrder.Browser.Recordset = rec
     End Sub
@@ -99,24 +114,29 @@
         btnPrevious.Enabled = Not oOrder.Browser.BoF
     End Sub
 
-    Private Sub addData()
+    Private Sub addData(oOrder As SAPbobsCOM.Documents)
+        'untuk mengisi field form dari data yg diambil dari database
         TextBoxDocNumber.Text = oOrder.DocNum
         TextBoxBPCode.Text = oOrder.CardCode
         TextBoxBPName.Text = oOrder.CardName
         TextBoxDocTotal.Text = oOrder.DocTotal
+        TextBoxDocStatus.Text = oOrder.DocumentStatus
         DateTimePickerDocDate.Value = oOrder.DocDate
         DateTimePickerDocDueDate.Value = oOrder.DocDueDate
         DateTimePickerTaxDate.Value = oOrder.TaxDate
-
+        DataGridView.Rows.Clear()
         For i As Integer = 0 To oOrder.Lines.Count - 1
-
+            DataGridView.Rows.Add(1)
+            oOrder.Lines.SetCurrentLine(i)
             DataGridView.Rows(i).Cells(0).Value = oOrder.Lines.ItemCode
             DataGridView.Rows(i).Cells(1).Value = oOrder.Lines.ItemDescription
             DataGridView.Rows(i).Cells(2).Value = oOrder.Lines.Quantity
             DataGridView.Rows(i).Cells(3).Value = oOrder.Lines.Price
             DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.LineTotal
             DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.Quantity * oOrder.Lines.Price
+
         Next
+        oOrder.Lines.SetCurrentLine(0)
     End Sub
 
     Private Sub calTotal()
@@ -132,6 +152,7 @@
 
     Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs) Handles btnAdd.Click
         updateMode(1)
+        TextBoxDocNumber.Text = oOrder.DocNum + 1
     End Sub
 
     Private Sub btnUpdate_Click(sender As System.Object, e As System.EventArgs) Handles btnUpdate.Click
@@ -148,7 +169,7 @@
         If oOrder.Browser.BoF = False Then
             updateMode(0, False)
             oOrder.Browser.MovePrevious()
-            addData()
+            addData(oOrder)
         End If
     End Sub
 
@@ -158,7 +179,7 @@
         updatenextprevious()
         If oOrder.Browser.EoF = False Then
             updateMode(0, False)
-            addData()
+            addData(oOrder)
             oOrder.Browser.MoveNext()
         End If
     End Sub
@@ -176,18 +197,20 @@
             Select Case mode
                 Case 1
                     getData()
-                    oOrder.Add()
+                    oOrderTemp.Add()
                     errorBox()
                     clearAll()
                     refreshFromDb()
+                    TextBoxDocNumber.Text = oOrder.DocNum + 1
                 Case 2
-                    oOrder.GetByKey(TextBoxDocNumber.Text)
-                    addData()
+                    'kita query berdasarkan doc number
+                    oOrderTemp.GetByKey(TextBoxDocNumber.Text)
+                    addData(oOrderTemp)
                     errorBox()
                 Case 3
                     oOrder.GetByKey(TextBoxDocNumber.Text)
                     getData()
-                    oOrder.Update()
+                    oOrderTemp.Update()
                     errorBox()
                     updateMode(0, False)
                     refreshFromDb()
@@ -203,6 +226,10 @@
     End Sub
 
     Private Sub DataGridView_CellClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellClick
+        ' ini ketika cell in datagrid di klik
+        ' utk cell pertama 
+        ' maka akan buka ke form chooseitem
+        ' dan mengambil data dari form tersebut dengan nama varibel 'data'
         If e.RowIndex >= 0 Then
 
             Dim row = Me.DataGridView.Rows(e.RowIndex)
@@ -219,6 +246,7 @@
     End Sub
 
     Private Sub DataGridView_CellValueChanged(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellValueChanged
+        ' utk calculasi total di datagrid
         If e.RowIndex >= 0 Then
             Dim row = Me.DataGridView.Rows(e.RowIndex)
 
@@ -232,5 +260,14 @@
             End If
 
         End If
+    End Sub
+
+    Private Sub ComboBoxCopyTo_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ComboBoxCopyTo.SelectedIndexChanged
+        Select Case ComboBoxCopyTo.SelectedIndex
+            ' 0 = invoice
+            Case 0
+                Dim ar As ARInvoice = New ARInvoice(oOrder)
+                ar.ShowDialog()
+        End Select
     End Sub
 End Class

@@ -73,6 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Db.vb" />
+    <Compile Include="Form\ARInvoice.Designer.vb">
+      <DependentUpon>ARInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ARInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\BPMasterData.Designer.vb">
       <DependentUpon>BPMasterData.vb</DependentUpon>
     </Compile>
@@ -89,6 +95,12 @@
       <DependentUpon>ItemMasterData.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\ItemMasterData.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PurchaseOrder.Designer.vb">
+      <DependentUpon>PurchaseOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\PurchaseOrder.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\SalesOrder.Designer.vb">
@@ -151,6 +163,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form\ARInvoice.resx">
+      <DependentUpon>ARInvoice.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\BPMasterData.resx">
       <DependentUpon>BPMasterData.vb</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\ItemMasterData.resx">
       <DependentUpon>ItemMasterData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchaseOrder.resx">
+      <DependentUpon>PurchaseOrder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\SalesOrder.resx">
       <DependentUpon>SalesOrder.vb</DependentUpon>
