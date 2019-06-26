@@ -45,7 +45,6 @@
         oOrderTemp.TaxDate = DateTimePickerTaxDate.Value
         'utk .lines ini utk ke database RDR1
         'dimana berisi tentang tiap transaksi dari sales order
-                oOrderTemp.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
 
         If mode = 1 Then
             For i As Integer = 0 To DataGridView.Rows.Count - 1
