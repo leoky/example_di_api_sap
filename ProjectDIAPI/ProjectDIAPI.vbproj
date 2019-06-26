@@ -73,6 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Db.vb" />
+    <Compile Include="Form\ARInvoice.Designer.vb">
+      <DependentUpon>ARInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ARInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\BPMasterData.Designer.vb">
       <DependentUpon>BPMasterData.vb</DependentUpon>
     </Compile>
@@ -145,6 +151,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form\ARInvoice.resx">
+      <DependentUpon>ARInvoice.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\BPMasterData.resx">
       <DependentUpon>BPMasterData.vb</DependentUpon>
     </EmbeddedResource>

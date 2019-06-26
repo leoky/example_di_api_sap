@@ -51,6 +51,10 @@ Partial Class SalesOrder
         Me.TextBoxDocNumber = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBoxDocTotal = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TextBoxDocStatus = New System.Windows.Forms.TextBox()
+        Me.ComboBoxCopyTo = New System.Windows.Forms.ComboBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -319,11 +323,52 @@ Partial Class SalesOrder
         Me.TextBoxDocTotal.Size = New System.Drawing.Size(314, 22)
         Me.TextBoxDocTotal.TabIndex = 96
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(339, 160)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(77, 17)
+        Me.Label9.TabIndex = 97
+        Me.Label9.Text = "Doc Status"
+        '
+        'TextBoxDocStatus
+        '
+        Me.TextBoxDocStatus.Enabled = False
+        Me.TextBoxDocStatus.Location = New System.Drawing.Point(457, 160)
+        Me.TextBoxDocStatus.Name = "TextBoxDocStatus"
+        Me.TextBoxDocStatus.Size = New System.Drawing.Size(265, 22)
+        Me.TextBoxDocStatus.TabIndex = 98
+        '
+        'ComboBoxCopyTo
+        '
+        Me.ComboBoxCopyTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxCopyTo.Enabled = False
+        Me.ComboBoxCopyTo.FormattingEnabled = True
+        Me.ComboBoxCopyTo.Items.AddRange(New Object() {"A / R Invoice"})
+        Me.ComboBoxCopyTo.Location = New System.Drawing.Point(740, 621)
+        Me.ComboBoxCopyTo.Name = "ComboBoxCopyTo"
+        Me.ComboBoxCopyTo.Size = New System.Drawing.Size(184, 24)
+        Me.ComboBoxCopyTo.TabIndex = 100
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(661, 621)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(61, 17)
+        Me.Label10.TabIndex = 101
+        Me.Label10.Text = "Copy To"
+        '
         'SalesOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(956, 664)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.ComboBoxCopyTo)
+        Me.Controls.Add(Me.TextBoxDocStatus)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.TextBoxDocTotal)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.TextBoxDocNumber)
@@ -385,4 +430,8 @@ Partial Class SalesOrder
     Friend WithEvents TextBoxDocNumber As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents TextBoxDocTotal As System.Windows.Forms.TextBox
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents TextBoxDocStatus As System.Windows.Forms.TextBox
+    Friend WithEvents ComboBoxCopyTo As System.Windows.Forms.ComboBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
 End Class
