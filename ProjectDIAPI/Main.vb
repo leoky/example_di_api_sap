@@ -44,4 +44,8 @@
     Private Sub btnUDT_Click(sender As System.Object, e As System.EventArgs) Handles btnUDT.Click
         UDTdata.ShowDialog()
     End Sub
+
+    Private Sub GroupBoxMain_Enter(sender As System.Object, e As System.EventArgs) Handles GroupBoxMain.Enter
+
+    End Sub
 End Class
