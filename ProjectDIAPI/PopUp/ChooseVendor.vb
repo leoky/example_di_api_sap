@@ -1,15 +1,15 @@
-﻿Public Class ChooseCustomer
+﻿Public Class ChooseVendor
 
     Dim oObj As SAPbobsCOM.SBObob
     Public data As SAPbobsCOM.BusinessPartners
 
-    Private Sub ChooseCustomer_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+    Private Sub ChooseVendor_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
         oObj = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoBridge)
-        data = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oBusinessPartners)
-        rec = oObj.GetBPList(SAPbobsCOM.BoCardTypes.cCustomer)
+        Data = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oBusinessPartners)
+        rec = oObj.GetBPList(SAPbobsCOM.BoCardTypes.cSupplier)
 
-        'gridview harus diclear jika tidak, akan menimpa jika dibuka tutup
+        'gridview harus diclear jika tidak akan menimpa jika dibuka tutup
         btnChoose.Enabled = False
         DataGridViewListCustomer.Rows.Clear()
 
@@ -20,7 +20,6 @@
             DataGridViewListCustomer.Update()
             rec.MoveNext()
         Loop
-
     End Sub
 
     Private Sub btnNew_Click(sender As System.Object, e As System.EventArgs) Handles btnNew.Click

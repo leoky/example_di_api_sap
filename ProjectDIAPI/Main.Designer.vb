@@ -29,6 +29,7 @@ Partial Class Main
         Me.btnSalesOrder = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.btnItemMasterData = New System.Windows.Forms.Button()
+        Me.btnPurchaseOrder = New System.Windows.Forms.Button()
         Me.GroupBoxMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -44,6 +45,7 @@ Partial Class Main
         '
         'GroupBoxMain
         '
+        Me.GroupBoxMain.Controls.Add(Me.btnPurchaseOrder)
         Me.GroupBoxMain.Controls.Add(Me.btnUDT)
         Me.GroupBoxMain.Controls.Add(Me.btnUDF)
         Me.GroupBoxMain.Controls.Add(Me.btnSalesOrder)
@@ -53,13 +55,13 @@ Partial Class Main
         Me.GroupBoxMain.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBoxMain.Name = "GroupBoxMain"
         Me.GroupBoxMain.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBoxMain.Size = New System.Drawing.Size(205, 280)
+        Me.GroupBoxMain.Size = New System.Drawing.Size(205, 332)
         Me.GroupBoxMain.TabIndex = 1
         Me.GroupBoxMain.TabStop = False
         '
         'btnUDT
         '
-        Me.btnUDT.Location = New System.Drawing.Point(0, 220)
+        Me.btnUDT.Location = New System.Drawing.Point(0, 272)
         Me.btnUDT.Margin = New System.Windows.Forms.Padding(2)
         Me.btnUDT.Name = "btnUDT"
         Me.btnUDT.Size = New System.Drawing.Size(205, 46)
@@ -69,7 +71,7 @@ Partial Class Main
         '
         'btnUDF
         '
-        Me.btnUDF.Location = New System.Drawing.Point(0, 170)
+        Me.btnUDF.Location = New System.Drawing.Point(0, 222)
         Me.btnUDF.Margin = New System.Windows.Forms.Padding(2)
         Me.btnUDF.Name = "btnUDF"
         Me.btnUDF.Size = New System.Drawing.Size(205, 46)
@@ -107,11 +109,21 @@ Partial Class Main
         Me.btnItemMasterData.Text = "Item Master Data"
         Me.btnItemMasterData.UseVisualStyleBackColor = True
         '
+        'btnPurchaseOrder
+        '
+        Me.btnPurchaseOrder.Location = New System.Drawing.Point(0, 170)
+        Me.btnPurchaseOrder.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnPurchaseOrder.Name = "btnPurchaseOrder"
+        Me.btnPurchaseOrder.Size = New System.Drawing.Size(205, 46)
+        Me.btnPurchaseOrder.TabIndex = 5
+        Me.btnPurchaseOrder.Text = "Purchase Order"
+        Me.btnPurchaseOrder.UseVisualStyleBackColor = True
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(238, 347)
+        Me.ClientSize = New System.Drawing.Size(238, 422)
         Me.Controls.Add(Me.GroupBoxMain)
         Me.Controls.Add(Me.btnChooseCompany)
         Me.Margin = New System.Windows.Forms.Padding(2)
@@ -128,5 +140,6 @@ Partial Class Main
     Friend WithEvents btnSalesOrder As System.Windows.Forms.Button
     Friend WithEvents btnUDF As System.Windows.Forms.Button
     Friend WithEvents btnUDT As System.Windows.Forms.Button
+    Friend WithEvents btnPurchaseOrder As System.Windows.Forms.Button
 
 End Class

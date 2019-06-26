@@ -22,7 +22,6 @@ Partial Class PurchaseOrder
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TextBoxDocTotal = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBoxDocNumber = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -51,16 +50,14 @@ Partial Class PurchaseOrder
         Me.btnChooseCustomer = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.TextBoxDocStatus = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TextBoxDocTotal = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.ComboBoxCopyTo = New System.Windows.Forms.ComboBox()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'TextBoxDocTotal
-        '
-        Me.TextBoxDocTotal.Location = New System.Drawing.Point(519, 418)
-        Me.TextBoxDocTotal.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBoxDocTotal.Name = "TextBoxDocTotal"
-        Me.TextBoxDocTotal.Size = New System.Drawing.Size(138, 20)
-        Me.TextBoxDocTotal.TabIndex = 120
         '
         'Label8
         '
@@ -75,7 +72,7 @@ Partial Class PurchaseOrder
         'TextBoxDocNumber
         '
         Me.TextBoxDocNumber.Enabled = False
-        Me.TextBoxDocNumber.Location = New System.Drawing.Point(115, 117)
+        Me.TextBoxDocNumber.Location = New System.Drawing.Point(115, 96)
         Me.TextBoxDocNumber.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBoxDocNumber.Name = "TextBoxDocNumber"
         Me.TextBoxDocNumber.Size = New System.Drawing.Size(98, 20)
@@ -84,7 +81,7 @@ Partial Class PurchaseOrder
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(40, 118)
+        Me.Label7.Location = New System.Drawing.Point(40, 97)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(67, 13)
@@ -95,7 +92,7 @@ Partial Class PurchaseOrder
         '
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemCode, Me.ItemName, Me.Quantity, Me.UnitPrice, Me.Total})
-        Me.DataGridView.Location = New System.Drawing.Point(15, 205)
+        Me.DataGridView.Location = New System.Drawing.Point(15, 184)
         Me.DataGridView.Margin = New System.Windows.Forms.Padding(2)
         Me.DataGridView.Name = "DataGridView"
         Me.DataGridView.RowTemplate.Height = 24
@@ -138,7 +135,7 @@ Partial Class PurchaseOrder
         '
         'btnPrevious
         '
-        Me.btnPrevious.Location = New System.Drawing.Point(635, 93)
+        Me.btnPrevious.Location = New System.Drawing.Point(636, 36)
         Me.btnPrevious.Margin = New System.Windows.Forms.Padding(2)
         Me.btnPrevious.Name = "btnPrevious"
         Me.btnPrevious.Size = New System.Drawing.Size(25, 20)
@@ -148,7 +145,7 @@ Partial Class PurchaseOrder
         '
         'btnNext
         '
-        Me.btnNext.Location = New System.Drawing.Point(605, 93)
+        Me.btnNext.Location = New System.Drawing.Point(606, 36)
         Me.btnNext.Margin = New System.Windows.Forms.Padding(2)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(26, 20)
@@ -188,7 +185,7 @@ Partial Class PurchaseOrder
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(99, 445)
+        Me.btnCancel.Location = New System.Drawing.Point(99, 424)
         Me.btnCancel.Margin = New System.Windows.Forms.Padding(2)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(70, 26)
@@ -198,7 +195,7 @@ Partial Class PurchaseOrder
         '
         'BtnOK
         '
-        Me.BtnOK.Location = New System.Drawing.Point(25, 445)
+        Me.BtnOK.Location = New System.Drawing.Point(25, 424)
         Me.BtnOK.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnOK.Name = "BtnOK"
         Me.BtnOK.Size = New System.Drawing.Size(70, 26)
@@ -209,7 +206,7 @@ Partial Class PurchaseOrder
         'DateTimePickerTaxDate
         '
         Me.DateTimePickerTaxDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePickerTaxDate.Location = New System.Drawing.Point(459, 169)
+        Me.DateTimePickerTaxDate.Location = New System.Drawing.Point(460, 112)
         Me.DateTimePickerTaxDate.Name = "DateTimePickerTaxDate"
         Me.DateTimePickerTaxDate.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePickerTaxDate.TabIndex = 108
@@ -218,7 +215,7 @@ Partial Class PurchaseOrder
         'DateTimePickerDocDueDate
         '
         Me.DateTimePickerDocDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePickerDocDueDate.Location = New System.Drawing.Point(459, 143)
+        Me.DateTimePickerDocDueDate.Location = New System.Drawing.Point(460, 86)
         Me.DateTimePickerDocDueDate.Name = "DateTimePickerDocDueDate"
         Me.DateTimePickerDocDueDate.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePickerDocDueDate.TabIndex = 107
@@ -227,7 +224,7 @@ Partial Class PurchaseOrder
         'DateTimePickerDocDate
         '
         Me.DateTimePickerDocDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePickerDocDate.Location = New System.Drawing.Point(459, 118)
+        Me.DateTimePickerDocDate.Location = New System.Drawing.Point(460, 61)
         Me.DateTimePickerDocDate.Name = "DateTimePickerDocDate"
         Me.DateTimePickerDocDate.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePickerDocDate.TabIndex = 106
@@ -236,7 +233,7 @@ Partial Class PurchaseOrder
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(371, 148)
+        Me.Label6.Location = New System.Drawing.Point(372, 91)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(71, 13)
         Me.Label6.TabIndex = 105
@@ -245,7 +242,7 @@ Partial Class PurchaseOrder
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(370, 172)
+        Me.Label5.Location = New System.Drawing.Point(371, 115)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(82, 13)
         Me.Label5.TabIndex = 104
@@ -254,7 +251,7 @@ Partial Class PurchaseOrder
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(371, 123)
+        Me.Label4.Location = New System.Drawing.Point(372, 66)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(68, 13)
         Me.Label4.TabIndex = 103
@@ -262,7 +259,7 @@ Partial Class PurchaseOrder
         '
         'TextBoxBPName
         '
-        Me.TextBoxBPName.Location = New System.Drawing.Point(114, 167)
+        Me.TextBoxBPName.Location = New System.Drawing.Point(114, 146)
         Me.TextBoxBPName.Name = "TextBoxBPName"
         Me.TextBoxBPName.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxBPName.TabIndex = 102
@@ -270,7 +267,7 @@ Partial Class PurchaseOrder
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(40, 173)
+        Me.Label3.Location = New System.Drawing.Point(40, 152)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(35, 13)
         Me.Label3.TabIndex = 101
@@ -278,7 +275,7 @@ Partial Class PurchaseOrder
         '
         'TextBoxBPCode
         '
-        Me.TextBoxBPCode.Location = New System.Drawing.Point(114, 142)
+        Me.TextBoxBPCode.Location = New System.Drawing.Point(114, 121)
         Me.TextBoxBPCode.Name = "TextBoxBPCode"
         Me.TextBoxBPCode.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxBPCode.TabIndex = 100
@@ -287,7 +284,7 @@ Partial Class PurchaseOrder
         '
         Me.btnChooseCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnChooseCustomer.ForeColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnChooseCustomer.Location = New System.Drawing.Point(220, 144)
+        Me.btnChooseCustomer.Location = New System.Drawing.Point(220, 123)
         Me.btnChooseCustomer.Name = "btnChooseCustomer"
         Me.btnChooseCustomer.Size = New System.Drawing.Size(16, 16)
         Me.btnChooseCustomer.TabIndex = 99
@@ -296,28 +293,92 @@ Partial Class PurchaseOrder
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(40, 146)
+        Me.Label2.Location = New System.Drawing.Point(40, 125)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(51, 13)
+        Me.Label2.Size = New System.Drawing.Size(41, 13)
         Me.Label2.TabIndex = 98
-        Me.Label2.Text = "Customer"
+        Me.Label2.Text = "Vendor"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(259, 60)
+        Me.Label1.Location = New System.Drawing.Point(39, 61)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(158, 24)
         Me.Label1.TabIndex = 97
         Me.Label1.Text = "Purchase Order"
         '
+        'TextBoxDocStatus
+        '
+        Me.TextBoxDocStatus.Enabled = False
+        Me.TextBoxDocStatus.Location = New System.Drawing.Point(460, 138)
+        Me.TextBoxDocStatus.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxDocStatus.Name = "TextBoxDocStatus"
+        Me.TextBoxDocStatus.Size = New System.Drawing.Size(200, 20)
+        Me.TextBoxDocStatus.TabIndex = 122
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(371, 138)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(60, 13)
+        Me.Label9.TabIndex = 121
+        Me.Label9.Text = "Doc Status"
+        '
+        'TextBoxDocTotal
+        '
+        Me.TextBoxDocTotal.Location = New System.Drawing.Point(422, 396)
+        Me.TextBoxDocTotal.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxDocTotal.Name = "TextBoxDocTotal"
+        Me.TextBoxDocTotal.Size = New System.Drawing.Size(236, 20)
+        Me.TextBoxDocTotal.TabIndex = 124
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(381, 399)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(31, 13)
+        Me.Label10.TabIndex = 123
+        Me.Label10.Text = "Total"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(457, 450)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(47, 13)
+        Me.Label11.TabIndex = 126
+        Me.Label11.Text = "Copy To"
+        '
+        'ComboBoxCopyTo
+        '
+        Me.ComboBoxCopyTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxCopyTo.Enabled = False
+        Me.ComboBoxCopyTo.FormattingEnabled = True
+        Me.ComboBoxCopyTo.Items.AddRange(New Object() {"A / R Invoice"})
+        Me.ComboBoxCopyTo.Location = New System.Drawing.Point(516, 450)
+        Me.ComboBoxCopyTo.Margin = New System.Windows.Forms.Padding(2)
+        Me.ComboBoxCopyTo.Name = "ComboBoxCopyTo"
+        Me.ComboBoxCopyTo.Size = New System.Drawing.Size(139, 21)
+        Me.ComboBoxCopyTo.TabIndex = 125
+        '
         'PurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(690, 507)
+        Me.ClientSize = New System.Drawing.Size(683, 485)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.ComboBoxCopyTo)
         Me.Controls.Add(Me.TextBoxDocTotal)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.TextBoxDocStatus)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.TextBoxDocNumber)
         Me.Controls.Add(Me.Label7)
@@ -348,7 +409,6 @@ Partial Class PurchaseOrder
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TextBoxDocTotal As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents TextBoxDocNumber As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
@@ -377,4 +437,10 @@ Partial Class PurchaseOrder
     Friend WithEvents btnChooseCustomer As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents TextBoxDocStatus As System.Windows.Forms.TextBox
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents TextBoxDocTotal As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents ComboBoxCopyTo As System.Windows.Forms.ComboBox
 End Class

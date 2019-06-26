@@ -270,4 +270,8 @@
                 ar.ShowDialog()
         End Select
     End Sub
+
+    Private Sub DataGridView_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellContentClick
+
+    End Sub
 End Class
