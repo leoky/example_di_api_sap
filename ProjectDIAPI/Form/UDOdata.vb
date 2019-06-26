@@ -1,6 +1,7 @@
 ﻿Public Class UDOdata
 
 
+    'Private WithEvents SBO_Application As SAPbouiCOM.Application
     Private Sub AddUserTable(ByVal Name As String, ByVal Description As String, _
         ByVal Type As SAPbobsCOM.BoUTBTableType)
         '//****************************************************************************
@@ -60,7 +61,6 @@
     End Sub
 
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
-
         AddUserTable("SM_OMOR", "Meal Order", SAPbobsCOM.BoUTBTableType.bott_Document)
         chkUDOAfter.SetItemChecked(0, True)
         AddUserTable("SM_MOR1", "Meal Lines", SAPbobsCOM.BoUTBTableType.bott_DocumentLines)
@@ -337,7 +337,6 @@
     End Function
 
     Private Sub btnAddFields_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAddFields.Click
-
         Add_SM_OMOR_Fields()
         Add_SM_MOR1_Fields()
     End Sub
@@ -482,18 +481,18 @@
             oChildren = oGeneralData.Child("SM_MOR1")
 
             Dim i As Integer
-            For i = 1 To lstAlpha.Items.Count
+            For i = 1 To lstMainDish.Items.Count
                 'Create data for rows in the child table
                 oChild = oChildren.Add
-                oChild.SetProperty("U_MainDish", lstAlpha.Items.Item(i - 1))
-                oChild.SetProperty("U_SideDish", lstBeta.Items.Item(i - 1))
-                oChild.SetProperty("U_Drink", lstGamma.Items.Item(i - 1))
+                oChild.SetProperty("U_MainDish", lstMainDish.Items.Item(i - 1))
+                oChild.SetProperty("U_SideDish", lstSideDish.Items.Item(i - 1))
+                oChild.SetProperty("U_Drink", lstDrink.Items.Item(i - 1))
             Next
 
             'Add the new row, including children, to database
             oGeneralParams = oGeneralService.Add(oGeneralData)
 
-            txtPrice.Text = oGeneralParams.GetProperty("DocEntry")
+            txtCode.Text = oGeneralParams.GetProperty("DocEntry")
 
             MsgBox("Record added")
 
@@ -523,16 +522,16 @@
             oGeneralService = oCompanyService.GetGeneralService("SM_MOR")
 
             oGeneralParams = oGeneralService.GetDataInterface(SAPbobsCOM.GeneralServiceDataInterfaces.gsGeneralDataParams)
-            oGeneralParams.SetProperty("DocEntry", txtPrice.Text)
+            oGeneralParams.SetProperty("DocEntry", txtCode.Text)
             oGeneralData = oGeneralService.GetByParams(oGeneralParams)
 
             'Create data for a row in the child table
             oChildren = oGeneralData.Child("SM_MOR1")
 
             'Empty child record lists
-            lstAlpha.Items.Clear()
-            lstBeta.Items.Clear()
-            lstGamma.Items.Clear()
+            lstMainDish.Items.Clear()
+            lstSideDish.Items.Clear()
+            lstDrink.Items.Clear()
 
             ' Handle child rows
             oChildren = oGeneralData.Child("SM_MOR1")
@@ -541,9 +540,9 @@
             For i = 1 To oChildren.Count
                 oChild = oChildren.Item(i - 1)
 
-                lstAlpha.Items.Add(oChild.GetProperty("U_MainDish"))
-                lstBeta.Items.Add(oChild.GetProperty("U_SideDish"))
-                lstGamma.Items.Add(oChild.GetProperty("U_Drink"))
+                lstMainDish.Items.Add(oChild.GetProperty("U_MainDish"))
+                lstSideDish.Items.Add(oChild.GetProperty("U_SideDish"))
+                lstDrink.Items.Add(oChild.GetProperty("U_Drink"))
 
             Next
 
@@ -579,7 +578,7 @@
 
             'Get UDO record
             oGeneralParams = oGeneralService.GetDataInterface(SAPbobsCOM.GeneralServiceDataInterfaces.gsGeneralDataParams)
-            oGeneralParams.SetProperty("DocEntry", txtPrice.Text)
+            oGeneralParams.SetProperty("DocEntry", txtCode.Text)
             oGeneralData = oGeneralService.GetByParams(oGeneralParams)
 
             'Update UDO record
@@ -609,7 +608,7 @@
 
             'Delete UDO record
             oGeneralParams = oGeneralService.GetDataInterface(SAPbobsCOM.GeneralServiceDataInterfaces.gsGeneralDataParams)
-            oGeneralParams.SetProperty("DocEntry", txtPrice.Text)
+            oGeneralParams.SetProperty("DocEntry", txtCode.Text)
             oGeneralService.Delete(oGeneralParams)
 
             MsgBox("Deleted")
@@ -629,19 +628,19 @@
             MsgBox("Drink is empty")
         Else
             ' If all fields are full, add the child record
-            lstAlpha.Items.Add(txtMaindish.Text)
-            lstBeta.Items.Add(txtSideDish.Text)
-            lstGamma.Items.Add(txtDrink.Text)
+            lstMainDish.Items.Add(txtMaindish.Text)
+            lstSideDish.Items.Add(txtSideDish.Text)
+            lstDrink.Items.Add(txtDrink.Text)
         End If
 
     End Sub
 
     Sub RomoveChildRecord()
 
-        If lstAlpha.Items.Count() > 0 Then
-            lstAlpha.Items.Remove(lstAlpha.Items.Item(lstAlpha.Items.Count() - 1))
-            lstBeta.Items.Remove(lstBeta.Items.Item(lstBeta.Items.Count() - 1))
-            lstGamma.Items.Remove(lstGamma.Items.Item(lstGamma.Items.Count() - 1))
+        If lstMainDish.Items.Count() > 0 Then
+            lstMainDish.Items.Remove(lstMainDish.Items.Item(lstMainDish.Items.Count() - 1))
+            lstSideDish.Items.Remove(lstSideDish.Items.Item(lstSideDish.Items.Count() - 1))
+            lstDrink.Items.Remove(lstDrink.Items.Item(lstDrink.Items.Count() - 1))
         End If
 
     End Sub
@@ -654,7 +653,7 @@
         AddUDORecord()
     End Sub
 
-    Private Sub cmdUpdateRecord_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdUpdateRecord.Click, cmdUpdateRecord.Click
+    Private Sub cmdUpdateRecord_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdUpdateRecord.Click
         UpdateUDORecord()
     End Sub
 
@@ -686,5 +685,19 @@
 
 
 
+    Private Sub grpUDO_Enter(sender As System.Object, e As System.EventArgs) Handles grpUDO.Enter
 
+    End Sub
+
+    Private Sub chkUDOAfter_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles chkUDOAfter.SelectedIndexChanged
+
+    End Sub
+
+
+    Private Sub UDOdata_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        grpUDO.Enabled = True
+        grpRecords.Enabled = True
+        grpChild.Enabled = True
+
+    End Sub
 End Class
