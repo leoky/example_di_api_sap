@@ -45,16 +45,37 @@
         oOrderTemp.TaxDate = DateTimePickerTaxDate.Value
         'utk .lines ini utk ke database RDR1
         'dimana berisi tentang tiap transaksi dari sales order
-        For i As Integer = 0 To DataGridView.Rows.Count - 1
-            If DataGridView.Rows(i).Cells(0).Value Then
                 oOrderTemp.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
-                oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
-                oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
-                oOrderTemp.Lines.Price = DataGridView.Rows(i).Cells(3).Value
-                oOrderTemp.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
-                oOrderTemp.Lines.Add()
-            End If
-        Next
+
+        If mode = 1 Then
+            For i As Integer = 0 To DataGridView.Rows.Count - 1
+                If DataGridView.Rows(i).Cells(0).Value Then
+                    oOrderTemp.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
+                    oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
+                    oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
+                    oOrderTemp.Lines.Price = DataGridView.Rows(i).Cells(3).Value
+                    oOrderTemp.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
+                    oOrderTemp.Lines.Add()
+                End If
+            Next
+        Else
+            For i As Integer = 0 To DataGridView.Rows.Count - 1
+                If DataGridView.Rows(i).Cells(0).Value Then
+
+                    oOrderTemp.Lines.SetCurrentLine(i)
+                    oOrderTemp.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
+                    oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
+                    oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
+                    oOrderTemp.Lines.Price = DataGridView.Rows(i).Cells(3).Value
+                    oOrderTemp.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
+                    'If DataGridView.Rows.Count >= oOrderTemp.Lines.Count + 1 Then
+                    '    oOrderTemp.Lines.Add()
+                    'End If
+                End If
+            Next
+            oOrderTemp.Lines.SetCurrentLine(0)
+        End If
+
         oOrderTemp.DocTotal = TextBoxDocTotal.Text
     End Sub
 
@@ -221,7 +242,6 @@
         Catch ex As Exception
             MsgBox(ex)
         End Try
-
 
     End Sub
 
