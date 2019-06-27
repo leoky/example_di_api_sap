@@ -99,12 +99,8 @@
         TextBoxBPCode.Text = oOrder.CardCode
         TextBoxBPName.Text = oOrder.CardName
         TextBoxDocTotal.Text = oOrder.DocTotal
-        'TextBoxDocStatus.Text = oOrder.DocumentStatus
-        If oOrder.DocumentStatus = 1 Then
-            TextBoxDocStatus.Text = "Close"
-        Else
-            TextBoxDocStatus.Text = "Open"
-        End If
+        TextBoxDocStatus.Text = oOrder.DocumentStatus
+
         DateTimePickerDocDate.Value = oOrder.DocDate
         DateTimePickerDocDueDate.Value = oOrder.DocDueDate
         DateTimePickerTaxDate.Value = oOrder.TaxDate
@@ -121,6 +117,7 @@
 
         Next
         oOrder.Lines.SetCurrentLine(0)
+
     End Sub
 
     Private Sub getData()

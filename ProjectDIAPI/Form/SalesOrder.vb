@@ -135,32 +135,30 @@
     End Sub
 
     Private Sub addData(oOrder As SAPbobsCOM.Documents)
+
         'untuk mengisi field form dari data yg diambil dari database
         TextBoxDocNumber.Text = oOrder.DocNum
         TextBoxBPCode.Text = oOrder.CardCode
         TextBoxBPName.Text = oOrder.CardName
         TextBoxDocTotal.Text = oOrder.DocTotal
-        If oOrder.DocumentStatus = 1 Then
-            TextBoxDocStatus.Text = "Close"
-        Else
-            TextBoxDocStatus.Text = "Open"
-        End If
-        DateTimePickerDocDate.Value = oOrder.DocDate
-        DateTimePickerDocDueDate.Value = oOrder.DocDueDate
-        DateTimePickerTaxDate.Value = oOrder.TaxDate
-        DataGridView.Rows.Clear()
-        For i As Integer = 0 To oOrder.Lines.Count - 1
-            DataGridView.Rows.Add(1)
-            oOrder.Lines.SetCurrentLine(i)
-            DataGridView.Rows(i).Cells(0).Value = oOrder.Lines.ItemCode
-            DataGridView.Rows(i).Cells(1).Value = oOrder.Lines.ItemDescription
-            DataGridView.Rows(i).Cells(2).Value = oOrder.Lines.Quantity
-            DataGridView.Rows(i).Cells(3).Value = oOrder.Lines.Price
-            DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.LineTotal
-            DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.Quantity * oOrder.Lines.Price
+            TextBoxDocStatus.Text = oOrder.DocumentStatus
 
-        Next
-        oOrder.Lines.SetCurrentLine(0)
+            DateTimePickerDocDate.Value = oOrder.DocDate
+            DateTimePickerDocDueDate.Value = oOrder.DocDueDate
+            DateTimePickerTaxDate.Value = oOrder.TaxDate
+            DataGridView.Rows.Clear()
+            For i As Integer = 0 To oOrder.Lines.Count - 1
+                DataGridView.Rows.Add(1)
+                oOrder.Lines.SetCurrentLine(i)
+                DataGridView.Rows(i).Cells(0).Value = oOrder.Lines.ItemCode
+                DataGridView.Rows(i).Cells(1).Value = oOrder.Lines.ItemDescription
+                DataGridView.Rows(i).Cells(2).Value = oOrder.Lines.Quantity
+                DataGridView.Rows(i).Cells(3).Value = oOrder.Lines.Price
+                DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.LineTotal
+                DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.Quantity * oOrder.Lines.Price
+
+            Next
+            oOrder.Lines.SetCurrentLine(0)
     End Sub
 
     Private Sub calTotal()
