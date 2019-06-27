@@ -1,6 +1,7 @@
 ﻿Public Class PurchaseOrder
 
-    Dim oOrder, oOrderTemp As SAPbobsCOM.Documents
+    Public oOrder, oOrderTemp As SAPbobsCOM.Documents
+
     Private mode As Integer
     Dim docTotal
 
@@ -230,7 +231,7 @@
         Select Case ComboBoxCopyTo.SelectedIndex
             ' 0 = invoice
             Case 0
-                Dim ar As ARInvoice = New ARInvoice(oOrder)
+                Dim ar As APInvoice = New APInvoice(oOrder)
                 ar.ShowDialog()
         End Select
     End Sub

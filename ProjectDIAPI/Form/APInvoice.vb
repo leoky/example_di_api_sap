@@ -1,10 +1,11 @@
-﻿Public Class ARInvoice
+﻿Public Class APInvoice
+
     'ke db OINV
     Dim oInvoice As SAPbobsCOM.Documents
 
     Public Sub New(oInvoice As SAPbobsCOM.Documents)
         InitializeComponent()
-        Me.oInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oInvoices)
+        Me.oInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseInvoices)
         Me.oInvoice = oInvoice
     End Sub
 
@@ -56,7 +57,7 @@
     End Sub
 
     Private Sub BtnOK_Click(sender As System.Object, e As System.EventArgs) Handles BtnOK.Click
-        oInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oInvoices)
+        oInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseInvoices)
         oInvoice.CardCode = TextBoxBPCode.Text
 
         Dim sNewObjCode As String
@@ -69,7 +70,7 @@
             oInvoice.Lines.SetCurrentLine(0)
             oInvoice.Lines.BaseEntry = TextBoxDocNumber.Text
             oInvoice.Lines.BaseLine = i
-            oInvoice.Lines.BaseType = SAPbobsCOM.BoObjectTypes.oOrders
+            oInvoice.Lines.BaseType = SAPbobsCOM.BoObjectTypes.oPurchaseOrders
         Next
 
         lRetCode = oInvoice.Add()
