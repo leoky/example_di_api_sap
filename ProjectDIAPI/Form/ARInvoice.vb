@@ -80,4 +80,20 @@
             MsgBox("inv Added to DataBase", MsgBoxStyle.Information, "Order Added")
         End If
     End Sub
+
+    Private Sub Label1_Click(sender As System.Object, e As System.EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub btnFind_Click(sender As System.Object, e As System.EventArgs)
+
+    End Sub
+
+    Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs)
+
+    End Sub
+
+    Private Sub btnUpdate_Click(sender As System.Object, e As System.EventArgs)
+
+    End Sub
 End Class

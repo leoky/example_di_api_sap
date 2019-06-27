@@ -62,29 +62,29 @@ Partial Class PurchaseOrder
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(1716, 426)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label8.Location = New System.Drawing.Point(3146, 786)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(31, 13)
+        Me.Label8.Size = New System.Drawing.Size(56, 25)
         Me.Label8.TabIndex = 119
         Me.Label8.Text = "Total"
         '
         'TextBoxDocNumber
         '
         Me.TextBoxDocNumber.Enabled = False
-        Me.TextBoxDocNumber.Location = New System.Drawing.Point(115, 96)
-        Me.TextBoxDocNumber.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxDocNumber.Location = New System.Drawing.Point(211, 205)
+        Me.TextBoxDocNumber.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TextBoxDocNumber.Name = "TextBoxDocNumber"
-        Me.TextBoxDocNumber.Size = New System.Drawing.Size(98, 20)
+        Me.TextBoxDocNumber.Size = New System.Drawing.Size(176, 29)
         Me.TextBoxDocNumber.TabIndex = 118
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(40, 97)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label7.Location = New System.Drawing.Point(73, 207)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(67, 13)
+        Me.Label7.Size = New System.Drawing.Size(121, 25)
         Me.Label7.TabIndex = 117
         Me.Label7.Text = "Doc Number"
         '
@@ -92,11 +92,11 @@ Partial Class PurchaseOrder
         '
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemCode, Me.ItemName, Me.Quantity, Me.UnitPrice, Me.Total})
-        Me.DataGridView.Location = New System.Drawing.Point(15, 184)
-        Me.DataGridView.Margin = New System.Windows.Forms.Padding(2)
+        Me.DataGridView.Location = New System.Drawing.Point(28, 368)
+        Me.DataGridView.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DataGridView.Name = "DataGridView"
         Me.DataGridView.RowTemplate.Height = 24
-        Me.DataGridView.Size = New System.Drawing.Size(643, 200)
+        Me.DataGridView.Size = New System.Drawing.Size(1280, 380)
         Me.DataGridView.TabIndex = 116
         '
         'ItemCode
@@ -135,70 +135,70 @@ Partial Class PurchaseOrder
         '
         'btnPrevious
         '
-        Me.btnPrevious.Location = New System.Drawing.Point(636, 36)
-        Me.btnPrevious.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnPrevious.Location = New System.Drawing.Point(1263, 94)
+        Me.btnPrevious.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPrevious.Name = "btnPrevious"
-        Me.btnPrevious.Size = New System.Drawing.Size(25, 20)
+        Me.btnPrevious.Size = New System.Drawing.Size(46, 37)
         Me.btnPrevious.TabIndex = 114
         Me.btnPrevious.Text = ">"
         Me.btnPrevious.UseVisualStyleBackColor = True
         '
         'btnNext
         '
-        Me.btnNext.Location = New System.Drawing.Point(606, 36)
-        Me.btnNext.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnNext.Location = New System.Drawing.Point(1208, 94)
+        Me.btnNext.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(26, 20)
+        Me.btnNext.Size = New System.Drawing.Size(48, 37)
         Me.btnNext.TabIndex = 115
         Me.btnNext.Text = "<"
         Me.btnNext.UseVisualStyleBackColor = True
         '
         'btnFind
         '
-        Me.btnFind.Location = New System.Drawing.Point(2, 2)
-        Me.btnFind.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnFind.Location = New System.Drawing.Point(72, 135)
+        Me.btnFind.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnFind.Name = "btnFind"
-        Me.btnFind.Size = New System.Drawing.Size(56, 29)
+        Me.btnFind.Size = New System.Drawing.Size(103, 54)
         Me.btnFind.TabIndex = 111
         Me.btnFind.Text = "Find"
         Me.btnFind.UseVisualStyleBackColor = True
         '
         'btnUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(122, 2)
-        Me.btnUpdate.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnUpdate.Location = New System.Drawing.Point(292, 135)
+        Me.btnUpdate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(56, 29)
+        Me.btnUpdate.Size = New System.Drawing.Size(103, 54)
         Me.btnUpdate.TabIndex = 113
         Me.btnUpdate.Text = "Update"
         Me.btnUpdate.UseVisualStyleBackColor = True
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(62, 2)
-        Me.btnAdd.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnAdd.Location = New System.Drawing.Point(182, 135)
+        Me.btnAdd.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(56, 29)
+        Me.btnAdd.Size = New System.Drawing.Size(103, 54)
         Me.btnAdd.TabIndex = 112
         Me.btnAdd.Text = "Add"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(99, 424)
-        Me.btnCancel.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnCancel.Location = New System.Drawing.Point(182, 868)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(70, 26)
+        Me.btnCancel.Size = New System.Drawing.Size(128, 48)
         Me.btnCancel.TabIndex = 110
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'BtnOK
         '
-        Me.BtnOK.Location = New System.Drawing.Point(25, 424)
-        Me.BtnOK.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnOK.Location = New System.Drawing.Point(28, 868)
+        Me.BtnOK.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnOK.Name = "BtnOK"
-        Me.BtnOK.Size = New System.Drawing.Size(70, 26)
+        Me.BtnOK.Size = New System.Drawing.Size(128, 48)
         Me.BtnOK.TabIndex = 109
         Me.BtnOK.Text = "Add"
         Me.BtnOK.UseVisualStyleBackColor = True
@@ -206,96 +206,107 @@ Partial Class PurchaseOrder
         'DateTimePickerTaxDate
         '
         Me.DateTimePickerTaxDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePickerTaxDate.Location = New System.Drawing.Point(460, 112)
+        Me.DateTimePickerTaxDate.Location = New System.Drawing.Point(946, 223)
+        Me.DateTimePickerTaxDate.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.DateTimePickerTaxDate.Name = "DateTimePickerTaxDate"
-        Me.DateTimePickerTaxDate.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePickerTaxDate.Size = New System.Drawing.Size(363, 29)
         Me.DateTimePickerTaxDate.TabIndex = 108
         Me.DateTimePickerTaxDate.Value = New Date(2019, 6, 22, 23, 37, 16, 0)
         '
         'DateTimePickerDocDueDate
         '
         Me.DateTimePickerDocDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePickerDocDueDate.Location = New System.Drawing.Point(460, 86)
+        Me.DateTimePickerDocDueDate.Location = New System.Drawing.Point(946, 182)
+        Me.DateTimePickerDocDueDate.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.DateTimePickerDocDueDate.Name = "DateTimePickerDocDueDate"
-        Me.DateTimePickerDocDueDate.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePickerDocDueDate.Size = New System.Drawing.Size(363, 29)
         Me.DateTimePickerDocDueDate.TabIndex = 107
         Me.DateTimePickerDocDueDate.Value = New Date(2019, 6, 22, 23, 36, 58, 0)
         '
         'DateTimePickerDocDate
         '
         Me.DateTimePickerDocDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePickerDocDate.Location = New System.Drawing.Point(460, 61)
+        Me.DateTimePickerDocDate.Location = New System.Drawing.Point(946, 141)
+        Me.DateTimePickerDocDate.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.DateTimePickerDocDate.Name = "DateTimePickerDocDate"
-        Me.DateTimePickerDocDate.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePickerDocDate.Size = New System.Drawing.Size(363, 29)
         Me.DateTimePickerDocDate.TabIndex = 106
         Me.DateTimePickerDocDate.Value = New Date(2019, 6, 22, 23, 37, 9, 0)
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(372, 91)
+        Me.Label6.Location = New System.Drawing.Point(785, 186)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(71, 13)
+        Me.Label6.Size = New System.Drawing.Size(128, 25)
         Me.Label6.TabIndex = 105
         Me.Label6.Text = "Delivery Date"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(371, 115)
+        Me.Label5.Location = New System.Drawing.Point(785, 227)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(82, 13)
+        Me.Label5.Size = New System.Drawing.Size(147, 25)
         Me.Label5.TabIndex = 104
         Me.Label5.Text = "Document Date"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(372, 66)
+        Me.Label4.Location = New System.Drawing.Point(785, 145)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(68, 13)
+        Me.Label4.Size = New System.Drawing.Size(123, 25)
         Me.Label4.TabIndex = 103
         Me.Label4.Text = "Posting Date"
         '
         'TextBoxBPName
         '
-        Me.TextBoxBPName.Location = New System.Drawing.Point(114, 146)
+        Me.TextBoxBPName.Location = New System.Drawing.Point(209, 298)
+        Me.TextBoxBPName.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.TextBoxBPName.Name = "TextBoxBPName"
-        Me.TextBoxBPName.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxBPName.Size = New System.Drawing.Size(180, 29)
         Me.TextBoxBPName.TabIndex = 102
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(40, 152)
+        Me.Label3.Location = New System.Drawing.Point(73, 301)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(35, 13)
+        Me.Label3.Size = New System.Drawing.Size(64, 25)
         Me.Label3.TabIndex = 101
         Me.Label3.Text = "Name"
         '
         'TextBoxBPCode
         '
-        Me.TextBoxBPCode.Location = New System.Drawing.Point(114, 121)
+        Me.TextBoxBPCode.Location = New System.Drawing.Point(209, 251)
+        Me.TextBoxBPCode.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.TextBoxBPCode.Name = "TextBoxBPCode"
-        Me.TextBoxBPCode.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxBPCode.Size = New System.Drawing.Size(180, 29)
         Me.TextBoxBPCode.TabIndex = 100
         '
         'btnChooseCustomer
         '
         Me.btnChooseCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnChooseCustomer.ForeColor = System.Drawing.SystemColors.ActiveBorder
-        Me.btnChooseCustomer.Location = New System.Drawing.Point(220, 123)
+        Me.btnChooseCustomer.Location = New System.Drawing.Point(401, 250)
+        Me.btnChooseCustomer.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.btnChooseCustomer.Name = "btnChooseCustomer"
-        Me.btnChooseCustomer.Size = New System.Drawing.Size(16, 16)
+        Me.btnChooseCustomer.Size = New System.Drawing.Size(29, 30)
         Me.btnChooseCustomer.TabIndex = 99
         Me.btnChooseCustomer.TabStop = False
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(40, 125)
+        Me.Label2.Location = New System.Drawing.Point(73, 254)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(41, 13)
+        Me.Label2.Size = New System.Drawing.Size(76, 25)
         Me.Label2.TabIndex = 98
         Me.Label2.Text = "Vendor"
         '
@@ -303,56 +314,57 @@ Partial Class PurchaseOrder
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(39, 61)
+        Me.Label1.Location = New System.Drawing.Point(65, 69)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(158, 24)
+        Me.Label1.Size = New System.Drawing.Size(270, 39)
         Me.Label1.TabIndex = 97
         Me.Label1.Text = "Purchase Order"
         '
         'TextBoxDocStatus
         '
         Me.TextBoxDocStatus.Enabled = False
-        Me.TextBoxDocStatus.Location = New System.Drawing.Point(460, 138)
-        Me.TextBoxDocStatus.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxDocStatus.Location = New System.Drawing.Point(946, 262)
+        Me.TextBoxDocStatus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TextBoxDocStatus.Name = "TextBoxDocStatus"
-        Me.TextBoxDocStatus.Size = New System.Drawing.Size(200, 20)
+        Me.TextBoxDocStatus.Size = New System.Drawing.Size(363, 29)
         Me.TextBoxDocStatus.TabIndex = 122
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(371, 138)
-        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label9.Location = New System.Drawing.Point(785, 265)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(60, 13)
+        Me.Label9.Size = New System.Drawing.Size(108, 25)
         Me.Label9.TabIndex = 121
         Me.Label9.Text = "Doc Status"
         '
         'TextBoxDocTotal
         '
-        Me.TextBoxDocTotal.Location = New System.Drawing.Point(422, 396)
-        Me.TextBoxDocTotal.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBoxDocTotal.Location = New System.Drawing.Point(877, 759)
+        Me.TextBoxDocTotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TextBoxDocTotal.Name = "TextBoxDocTotal"
-        Me.TextBoxDocTotal.Size = New System.Drawing.Size(236, 20)
+        Me.TextBoxDocTotal.Size = New System.Drawing.Size(429, 29)
         Me.TextBoxDocTotal.TabIndex = 124
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(381, 399)
-        Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label10.Location = New System.Drawing.Point(802, 765)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(31, 13)
+        Me.Label10.Size = New System.Drawing.Size(56, 25)
         Me.Label10.TabIndex = 123
         Me.Label10.Text = "Total"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(457, 450)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Location = New System.Drawing.Point(941, 871)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(47, 13)
+        Me.Label11.Size = New System.Drawing.Size(88, 25)
         Me.Label11.TabIndex = 126
         Me.Label11.Text = "Copy To"
         '
@@ -362,17 +374,17 @@ Partial Class PurchaseOrder
         Me.ComboBoxCopyTo.Enabled = False
         Me.ComboBoxCopyTo.FormattingEnabled = True
         Me.ComboBoxCopyTo.Items.AddRange(New Object() {"A / R Invoice"})
-        Me.ComboBoxCopyTo.Location = New System.Drawing.Point(516, 450)
-        Me.ComboBoxCopyTo.Margin = New System.Windows.Forms.Padding(2)
+        Me.ComboBoxCopyTo.Location = New System.Drawing.Point(1049, 868)
+        Me.ComboBoxCopyTo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ComboBoxCopyTo.Name = "ComboBoxCopyTo"
-        Me.ComboBoxCopyTo.Size = New System.Drawing.Size(139, 21)
+        Me.ComboBoxCopyTo.Size = New System.Drawing.Size(252, 32)
         Me.ComboBoxCopyTo.TabIndex = 125
         '
         'PurchaseOrder
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(683, 485)
+        Me.ClientSize = New System.Drawing.Size(1342, 1016)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.ComboBoxCopyTo)
         Me.Controls.Add(Me.TextBoxDocTotal)
@@ -402,6 +414,7 @@ Partial Class PurchaseOrder
         Me.Controls.Add(Me.btnChooseCustomer)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.Name = "PurchaseOrder"
         Me.Text = "PurchaseOrder"
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).EndInit()

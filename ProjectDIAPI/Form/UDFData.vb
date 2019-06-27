@@ -12,7 +12,7 @@
         oUserFieldsMD.Name = TextBoxUDFName.Text
         oUserFieldsMD.Description = TextBoxUDFDescription.Text
         oUserFieldsMD.Type = SAPbobsCOM.BoFieldTypes.db_Alpha
-        oUserFieldsMD.EditSize = TextBoxUDFEditSize.Text
+        oUserFieldsMD.EditSize = 20
 
         oUserFieldsMD.Add()
 
@@ -21,7 +21,7 @@
     Private Sub clearAll()
         TextBoxUDFName.Clear()
         TextBoxUDFDescription.Clear()
-        TextBoxUDFEditSize.Clear()
+
 
     End Sub
 

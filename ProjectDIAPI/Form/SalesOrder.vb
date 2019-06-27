@@ -140,7 +140,11 @@
         TextBoxBPCode.Text = oOrder.CardCode
         TextBoxBPName.Text = oOrder.CardName
         TextBoxDocTotal.Text = oOrder.DocTotal
-        TextBoxDocStatus.Text = oOrder.DocumentStatus
+        If oOrder.DocumentStatus = 1 Then
+            TextBoxDocStatus.Text = "Close"
+        Else
+            TextBoxDocStatus.Text = "Open"
+        End If
         DateTimePickerDocDate.Value = oOrder.DocDate
         DateTimePickerDocDueDate.Value = oOrder.DocDueDate
         DateTimePickerTaxDate.Value = oOrder.TaxDate
@@ -291,6 +295,14 @@
     End Sub
 
     Private Sub DataGridView_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellContentClick
+
+    End Sub
+
+    Private Sub Label1_Click(sender As System.Object, e As System.EventArgs) Handles Label1.Click
+
+    End Sub
+
+    Private Sub TextBoxDocStatus_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBoxDocStatus.TextChanged
 
     End Sub
 End Class

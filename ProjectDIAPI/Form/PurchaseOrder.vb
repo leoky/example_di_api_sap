@@ -99,7 +99,12 @@
         TextBoxBPCode.Text = oOrder.CardCode
         TextBoxBPName.Text = oOrder.CardName
         TextBoxDocTotal.Text = oOrder.DocTotal
-        TextBoxDocStatus.Text = oOrder.DocumentStatus
+        'TextBoxDocStatus.Text = oOrder.DocumentStatus
+        If oOrder.DocumentStatus = 1 Then
+            TextBoxDocStatus.Text = "Close"
+        Else
+            TextBoxDocStatus.Text = "Open"
+        End If
         DateTimePickerDocDate.Value = oOrder.DocDate
         DateTimePickerDocDueDate.Value = oOrder.DocDueDate
         DateTimePickerTaxDate.Value = oOrder.TaxDate
@@ -279,4 +284,11 @@
         End If
     End Sub
 
+    Private Sub Label4_Click(sender As System.Object, e As System.EventArgs) Handles Label4.Click
+
+    End Sub
+
+    Private Sub TextBoxDocStatus_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBoxDocStatus.TextChanged
+
+    End Sub
 End Class

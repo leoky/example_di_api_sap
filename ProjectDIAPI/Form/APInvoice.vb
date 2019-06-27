@@ -81,4 +81,8 @@
             MsgBox("inv Added to DataBase", MsgBoxStyle.Information, "Order Added")
         End If
     End Sub
+
+    Private Sub btnFind_Click(sender As System.Object, e As System.EventArgs)
+
+    End Sub
 End Class

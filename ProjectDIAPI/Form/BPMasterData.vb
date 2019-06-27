@@ -137,6 +137,7 @@
 
 
     Private Sub btnNext_Click(sender As System.Object, e As System.EventArgs) Handles btnNext.Click
+
         updateNextPrevious()
         If rec.EoF = False Then
             addData(rec)
@@ -145,6 +146,7 @@
     End Sub
 
     Private Sub btnPrevious_Click(sender As System.Object, e As System.EventArgs) Handles btnPrevious.Click
+
         updateNextPrevious()
         If rec.BoF = False Then
             rec.MovePrevious()
@@ -153,6 +155,10 @@
     End Sub
 
     Private Sub ComboBoxBPType_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ComboBoxBPType.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub GroupBox2_Enter(sender As System.Object, e As System.EventArgs) Handles GroupBox2.Enter
 
     End Sub
 End Class

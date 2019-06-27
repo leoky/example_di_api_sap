@@ -73,6 +73,7 @@
     'untuk next kita tammpilakn data dulu baru dinext
     'untuk previous kita eksekusi method previous dulu baru update data
     Private Sub btnPrevious_Click(sender As System.Object, e As System.EventArgs) Handles btnPrevious.Click
+
         updatenextprevious()
         If rec.BoF = False Then
             rec.MovePrevious()
@@ -81,6 +82,7 @@
     End Sub
 
     Private Sub btnNext_Click(sender As System.Object, e As System.EventArgs) Handles btnNext.Click
+
         updatenextprevious()
         If rec.EoF = False Then
             addData(rec)
@@ -152,7 +154,7 @@
     End Sub
 
     Private Sub refreshFromDb()
-        rec.DoQuery("select * from OITM order by ItemCode desc")
+        rec.DoQuery("SELECT DISTINCT T0.[ItemCode], T0.[ItemName], T1.[Price] FROM OITM T0  INNER JOIN ITM1 T1 ON T0.[ItemCode] = T1.[ItemCode] ORDER BY T0.[ItemCode] DESC")
         'rec = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoBridge).GetItemList()
     End Sub
 
@@ -160,6 +162,10 @@
         items.ItemCode = TextBoxItemNo.Text
         items.ItemName = TextBoxDescription.Text
         items.PriceList.Price = TextBoxPrice.Text
+
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As System.Object, e As System.EventArgs)
 
     End Sub
 End Class
