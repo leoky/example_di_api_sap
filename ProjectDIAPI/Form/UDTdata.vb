@@ -1,15 +1,9 @@
 ﻿Public Class UDTdata
 
-    Private Sub UDTdata_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        
 
-
-
-        
-
-    End Sub
 
     Private Sub btnOK_Click(sender As System.Object, e As System.EventArgs) Handles btnOK.Click
+        '//menekan button dan memanggil method tertentu
         Try
             addData()
             MsgBox("Telah TerAdd")
@@ -20,6 +14,7 @@
     End Sub
 
     Private Sub addData()
+        '//memanggil DI API sap dan menginitialize 
         Dim oUsrTbl As SAPbobsCOM.UserTablesMD
 
         oUsrTbl = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oUserTables)
