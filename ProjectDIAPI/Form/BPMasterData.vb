@@ -7,14 +7,23 @@
         Try
             Select Case mode
                 Case 1
+                    'utk mode add
+                    'ambil data yang ada di form
+                    ' add ke database
                     getData()
                     BP.Add()
                     clearAll()
                     refreshFromDb()
                 Case 2
+                    'utk mode find
                     recTemp.DoQuery("SELECT CardCode, CardName, CardType,  Phone1, Phone2  FROM OCRD WHERE CardCode = '" + TextBoxBPCode.Text + "' AND CardName Like ('%" + TextBoxBPName.Text + "%')")
                     addData(recTemp)
                 Case 3
+                    'utk mode update
+                    'pertama ambil primary keynya dulu
+                    'ambil data di form
+                    'update ke db
+
                     BP.GetByKey(TextBoxBPCode.Text)
                     getData()
 
@@ -32,6 +41,13 @@
     End Sub
 
     Private Sub BPMasterData_Load(Sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        'ketika form dibuka 
+        'initial data 
+        'rec utk menampung list data ketika diambil yg dipanggil dari method refreshfromdb
+        'rectemp utk menampung data yg ada di form utk membedakan
+
+        'awal awal ke mode add
+        'ambil list data businessmaster data 
         BP = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oBusinessPartners)
         rec = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
         recTemp = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
@@ -44,6 +60,7 @@
     End Sub
 
     Private Sub getData()
+        'mengambil data dari form
         BP.CardCode = TextBoxBPCode.Text
         BP.CardName = TextBoxBPName.Text
         BP.Phone1 = TextBoxBPPhone1.Text
@@ -52,7 +69,7 @@
     End Sub
 
     Private Sub addData(rec As SAPbobsCOM.Recordset)
-
+        'method utk mengisi form dari database
         TextBoxBPCode.Text = rec.Fields.Item(0).Value
         TextBoxBPName.Text = rec.Fields.Item(1).Value
         If rec.Fields.Item(2).Value.ToString = "C" Then
@@ -152,13 +169,5 @@
             rec.MovePrevious()
             addData(rec)
         End If
-    End Sub
-
-    Private Sub ComboBoxBPType_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ComboBoxBPType.SelectedIndexChanged
-
-    End Sub
-
-    Private Sub GroupBox2_Enter(sender As System.Object, e As System.EventArgs) Handles GroupBox2.Enter
-
     End Sub
 End Class
