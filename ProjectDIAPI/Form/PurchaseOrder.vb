@@ -9,6 +9,8 @@
 
     Private Sub clearAll()
         'clear semua field form
+        '// Menu clearAll untuk membersihkan semua bagian mulai dari textbox, datagridview dan mereset datepicker ke tanggal sekarang
+
         TextBoxBPCode.Clear()
         TextBoxBPName.Clear()
         TextBoxDocNumber.Clear()
@@ -75,6 +77,12 @@
 
     Private Sub PurchaseOrder_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         'initial data
+        '// Awalnya, di bagian ini yang akan terload duluan, nah disini menggunakan API dengan oPurchaseOrders (SAPbobsCOM.BoObjectTypes.oPurchaseOrders)
+        '// Untuk pertama kalinya akan mengarahkan mode (UpdateMode) ke mode 1
+        '// Setelah itu dia akan memanggil refreshFromDb()
+        '// Nilai DateTimePicker pada code akan langsung diambil tanggal sekarang (hari ini)
+        '// TexBoxDocNumber itu nomor dukumen, nah oOrder.DocNum itu diambil dari database dan ditambahkan 1 (untuk add dokumen baru)
+
         rec = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
         oOrder = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseOrders)
         oOrderTemp = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseOrders)
@@ -150,7 +158,7 @@
 
 
     Private Sub BtnOK_Click(sender As System.Object, e As System.EventArgs) Handles BtnOK.Click
-
+        '// BtnOK ada beberapa fungsi dan akan berubah-ubah seperti Find Add Update, tergantung dari menu yang dipilih diatas
         Try
             Select Case mode
                 Case 1
@@ -192,7 +200,10 @@
 
     End Sub
 
+
     Private Sub btnChooseCustomer_Click(sender As System.Object, e As System.EventArgs) Handles btnChooseCustomer.Click
+        '// Ini yang akan dijalankan ketika button pemilihan customer diklik
+        '// Data yang dipilih di dialog baru, akan dipindahkan ke TextBoxBPCode dan TextBoxBPName 
         Dim cc As ChooseVendor = New ChooseVendor
         cc.ShowDialog()
         TextBoxBPCode.Text = cc.data.CardCode
@@ -223,6 +234,7 @@
 
     Private Sub calTotal()
         'method utk hitung total nilai order
+        '// untuk menghitung docTotal
         docTotal = 0
         For i As Integer = 0 To DataGridView.Rows.Count - 1
             docTotal = docTotal + DataGridView.Rows(i).Cells(4).Value

@@ -264,7 +264,7 @@
 
     Private Sub DataGridView_CellClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellClick
         ' ini ketika cell in datagrid di klik
-        ' utk cell pertama 
+        ' utk cell pertama
         ' maka akan buka ke form chooseitem
         ' dan mengambil data dari form tersebut dengan nama varibel 'data'
         If e.RowIndex >= 0 Then

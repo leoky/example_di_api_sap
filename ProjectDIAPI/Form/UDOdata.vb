@@ -1,50 +1,26 @@
 ﻿Public Class UDOdata
 
 
-    'Private WithEvents SBO_Application As SAPbouiCOM.Application
+
     Private Sub AddUserTable(ByVal Name As String, ByVal Description As String, _
         ByVal Type As SAPbobsCOM.BoUTBTableType)
-        '//****************************************************************************
-        '// The UserTablesMD represents a meta-data object which allows us
-        '// to add\remove tables, change a table name etc.
-        '//****************************************************************************
+        
 
         Dim oUserTablesMD As SAPbobsCOM.UserTablesMD
 
-        '//****************************************************************************
-        '// In any meta-data operation there should be no other object "alive"
-        '// but the meta-data object, otherwise the operation will fail.
-        '// This restriction is intended to prevent a collisions
-        '//****************************************************************************
 
-        '// the meta-data object needs to be initialized with a
-        '// regular UserTables object
+        '// objek-objek di initialize
         oUserTablesMD = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oUserTables)
 
-        '//**************************************************
-        '// when adding user tables or fields to the SBO DB
-        '// use a prefix identifying your partner name space
-        '// this will prevent collisions between different
-        '// partners add-ons
-        '//
-        '// SAP's name space prefix is "BE_"
-        '//**************************************************		
 
-        '// set the table parameters
+
+        '// set parameter table
         oUserTablesMD.TableName = Name
         oUserTablesMD.TableDescription = Description
         oUserTablesMD.TableType = Type
 
-        '// Add the table
-        '// This action add an empty table with 2 default fields
-        '// 'Code' and 'Name' which serve as the key
-        '// in order to add your own User Fields
-        '// see the AddUserFields.frm in this project
-        '// a privat, user defined, key may be added
-        '// see AddPrivateKey.frm in this project
-
         lRetCode = oUserTablesMD.Add
-        '// check for errors in the process
+        '// check error
         If lRetCode <> 0 Then
             If lRetCode = -1 Then
             Else
@@ -71,9 +47,6 @@
         Dim oUserFieldsMD As SAPbobsCOM.UserFieldsMD
         oUserFieldsMD = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oUserFields)
 
-        '************************************
-        ' Adding "Name" field
-        '************************************
         '// Setting the Field's properties
 
         oUserFieldsMD.TableName = "@SM_OMOR"
@@ -97,9 +70,7 @@
             chkUDOAfter.SetItemChecked(1, True)
             MsgBox("Field: '" & oUserFieldsMD.Name & "' was added successfuly to " & oUserFieldsMD.TableName & " Table")
         End If
-        '************************************
-        ' Adding "Room" field
-        '************************************
+
         '// Setting the Field's properties
 
         oUserFieldsMD.TableName = "@SM_OMOR"
@@ -123,9 +94,7 @@
             chkUDOAfter.SetItemChecked(2, True)
             MsgBox("Field: '" & oUserFieldsMD.Name & "' was added successfuly to " & oUserFieldsMD.TableName & " Table")
         End If
-        '************************************
-        ' Adding "Price" field
-        '************************************
+
         '// Setting the Field's properties
 
         oUserFieldsMD.TableName = "@SM_OMOR"
@@ -159,9 +128,6 @@
         oUserFieldsMD = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oUserFields)
 
 
-        '************************************
-        ' Adding "Line Type" field
-        '************************************
         '// Setting the Field's properties
 
         oUserFieldsMD.TableName = "@SM_MOR1"
@@ -208,10 +174,7 @@
         GC.Collect()
         oUserFieldsMD = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oUserFields)
 
-
-        '************************************
-        ' Adding "Main Dish" field
-        '************************************
+*
         '// Setting the Field's properties
 
         oUserFieldsMD.TableName = "@SM_MOR1"
@@ -236,9 +199,7 @@
             MsgBox("Field: '" & oUserFieldsMD.Name & "' was added successfuly to " & oUserFieldsMD.TableName & " Table")
         End If
 
-        '************************************
-        ' Adding "SideDish" field
-        '************************************
+
         '// Setting the Field's properties
 
         oUserFieldsMD.TableName = "@SM_MOR1"
@@ -263,9 +224,6 @@
             MsgBox("Field: '" & oUserFieldsMD.Name & "' was added successfuly to " & oUserFieldsMD.TableName & " Table")
         End If
 
-        '************************************
-        ' Adding "Drink" field
-        '************************************
         '// Setting the Field's properties
 
         oUserFieldsMD.TableName = "@SM_MOR1"
@@ -295,9 +253,7 @@
         GC.Collect()
         oUserFieldsMD = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oUserFields)
 
-        '************************************
-        ' Adding "Price" field
-        '************************************
+
         '// Setting the Field's properties
 
         oUserFieldsMD.TableName = "@SM_MOR1"
