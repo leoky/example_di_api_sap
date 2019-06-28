@@ -6,18 +6,20 @@
     Private Sub ChooseItem_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         data = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oItems)
         oObj = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoBridge)
-        rec = oObj.GetItemList()
-
+        'rec = oObj.GetItemList()
+        data.Browser.Recordset = oObj.GetItemList()
         btnChoose.Enabled = False
         DataGridView.Rows.Clear()
 
-        Do Until rec.EoF = True
+        Do Until data.Browser.EoF = True
             DataGridView.Rows.Add(1)
-            DataGridView.Rows(DataGridView.RowCount - 1).Cells(0).Value = rec.Fields.Item(0).Value
-            DataGridView.Rows(DataGridView.RowCount - 1).Cells(1).Value = rec.Fields.Item(1).Value
+            DataGridView.Rows(DataGridView.RowCount - 1).Cells(0).Value = data.ItemCode
+            DataGridView.Rows(DataGridView.RowCount - 1).Cells(1).Value = data.ItemName
+            DataGridView.Rows(DataGridView.RowCount - 1).Cells(3).Value = data.PriceList.Price
             DataGridView.Update()
-            rec.MoveNext()
+            data.Browser.MoveNext()
         Loop
+
     End Sub
 
     Public Sub getData(e As System.Windows.Forms.DataGridViewCellEventArgs)
@@ -25,7 +27,7 @@
             Dim row = Me.DataGridView.Rows(e.RowIndex)
             data.ItemCode = row.Cells(0).Value.ToString
             data.ItemName = row.Cells(1).Value.ToString
-            'data.PriceList.Price = rec.Fields.Item(data.PriceList.Price).Value
+            data.PriceList.Price = row.Cells(3).Value.ToString
         End If
     End Sub
 

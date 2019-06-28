@@ -1,12 +1,15 @@
 ﻿Public Class SalesOrder
 
     'docTotal untuk variabel total transaksi
+    'oOrder untuk menerima semua data sales order
+    'oOrderTemp adalah object data yg digunakan utk mengambil data yg ada di field form
     Public oOrder, oOrderTemp As SAPbobsCOM.Documents
     Private mode As Integer
     Dim docTotal
 
     Private Sub SalesOrder_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         'awal ke mode add 
+        'mengambil list sales order (ORDR) 
         rec = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
         oOrder = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oOrders)
         oOrderTemp = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oOrders)
@@ -19,6 +22,7 @@
         DateTimePickerDocDate.Value = Now
         DateTimePickerDocDueDate.Value = Now
         DateTimePickerTaxDate.Value = Now
+
     End Sub
 
     'method utk bersihakn textfield dan reset ke default
@@ -141,27 +145,30 @@
         TextBoxBPCode.Text = oOrder.CardCode
         TextBoxBPName.Text = oOrder.CardName
         TextBoxDocTotal.Text = oOrder.DocTotal
-            TextBoxDocStatus.Text = oOrder.DocumentStatus
+        TextBoxDocStatus.Text = oOrder.DocumentStatus
 
-            DateTimePickerDocDate.Value = oOrder.DocDate
-            DateTimePickerDocDueDate.Value = oOrder.DocDueDate
-            DateTimePickerTaxDate.Value = oOrder.TaxDate
-            DataGridView.Rows.Clear()
-            For i As Integer = 0 To oOrder.Lines.Count - 1
-                DataGridView.Rows.Add(1)
-                oOrder.Lines.SetCurrentLine(i)
-                DataGridView.Rows(i).Cells(0).Value = oOrder.Lines.ItemCode
-                DataGridView.Rows(i).Cells(1).Value = oOrder.Lines.ItemDescription
-                DataGridView.Rows(i).Cells(2).Value = oOrder.Lines.Quantity
-                DataGridView.Rows(i).Cells(3).Value = oOrder.Lines.Price
-                DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.LineTotal
-                DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.Quantity * oOrder.Lines.Price
+        DateTimePickerDocDate.Value = oOrder.DocDate
+        DateTimePickerDocDueDate.Value = oOrder.DocDueDate
+        DateTimePickerTaxDate.Value = oOrder.TaxDate
+        DataGridView.Rows.Clear()
 
-            Next
-            oOrder.Lines.SetCurrentLine(0)
+        ' .Lines.setcurrentline utk update urutan item order keberapa sehingga bisa mengambil semua order item 
+        For i As Integer = 0 To oOrder.Lines.Count - 1
+            DataGridView.Rows.Add(1)
+            oOrder.Lines.SetCurrentLine(i)
+            DataGridView.Rows(i).Cells(0).Value = oOrder.Lines.ItemCode
+            DataGridView.Rows(i).Cells(1).Value = oOrder.Lines.ItemDescription
+            DataGridView.Rows(i).Cells(2).Value = oOrder.Lines.Quantity
+            DataGridView.Rows(i).Cells(3).Value = oOrder.Lines.Price
+            DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.LineTotal
+            DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.Quantity * oOrder.Lines.Price
+
+        Next
+        oOrder.Lines.SetCurrentLine(0)
     End Sub
 
     Private Sub calTotal()
+        'utk rumus hitung semuanya
         docTotal = 0
         For i As Integer = 0 To DataGridView.Rows.Count - 1
             docTotal = docTotal + DataGridView.Rows(i).Cells(4).Value
@@ -201,8 +208,9 @@
         updatenextprevious()
         If oOrder.Browser.EoF = False Then
             updateMode(0, False)
-            addData(oOrder)
             oOrder.Browser.MoveNext()
+            addData(oOrder)
+
         End If
     End Sub
 
@@ -218,6 +226,14 @@
         Try
             Select Case mode
                 Case 1
+                    'hitung total harga
+                    ' ambil data dari form
+                    ' add ke db dengan api yg sudah disediakan
+                    ' tampilkan err message jika ada
+                    ' form ke default
+                    ' mengambil ulang data sales order
+                    ' set doc number keselanjutnya utk membantu mengetahui document number sekarang ketika waktu mau add 
+                    calTotal()
                     getData()
                     oOrderTemp.Add()
                     errorBox()
@@ -260,6 +276,7 @@
                 item.ShowDialog()
                 row.Cells(0).Value = item.data.ItemCode
                 row.Cells(1).Value = item.data.ItemName
+                row.Cells(3).Value = item.data.PriceList.Price
             End If
 
         End If
@@ -267,10 +284,11 @@
     End Sub
 
     Private Sub DataGridView_CellValueChanged(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellValueChanged
+        ' ketika nilai cell di datagridview berubah
         ' utk calculasi total di datagrid
         If e.RowIndex >= 0 Then
             Dim row = Me.DataGridView.Rows(e.RowIndex)
-
+            'utk kali quantity dengan pricenya
             If row.Cells(2).Value >= 0 And row.Cells(3).Value >= 0 Then
                 row.Cells(4).Value = row.Cells(2).Value * row.Cells(3).Value
             End If
@@ -290,17 +308,5 @@
                 Dim ar As ARInvoice = New ARInvoice(oOrder)
                 ar.ShowDialog()
         End Select
-    End Sub
-
-    Private Sub DataGridView_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellContentClick
-
-    End Sub
-
-    Private Sub Label1_Click(sender As System.Object, e As System.EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub TextBoxDocStatus_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBoxDocStatus.TextChanged
-
     End Sub
 End Class

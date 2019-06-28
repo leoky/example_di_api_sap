@@ -86,11 +86,11 @@
     End Sub
 
     Private Sub data()
-        TextBoxUsernameDb.Text = "sa"
-        TextBoxPasswordDb.Text = "sa"
-        TextBoxServerName.Text = "DESKTOP-2FI5D08"
-        TextBoxUsernameCompany.Text = "manager"
-        TextBoxPasswordCompany.Text = "1234"
+        TextBoxUsernameDb.Text = Login.UsernameDb
+        TextBoxPasswordDb.Text = Login.PasswordDb
+        TextBoxServerName.Text = Login.ServerName
+        TextBoxUsernameCompany.Text = Login.UsernameCompany
+        TextBoxPasswordCompany.Text = Login.PasswordCompany
     End Sub
 
     Private Sub TextBoxServerName_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBoxServerName.TextChanged

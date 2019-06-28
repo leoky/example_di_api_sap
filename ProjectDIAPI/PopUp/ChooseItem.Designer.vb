@@ -29,6 +29,7 @@ Partial Class ChooseItem
         Me.ItemCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.InStock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -64,12 +65,12 @@ Partial Class ChooseItem
         Me.DataGridView.AllowUserToAddRows = False
         Me.DataGridView.AllowUserToDeleteRows = False
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemCode, Me.ItemName, Me.InStock})
+        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemCode, Me.ItemName, Me.InStock, Me.ItemPrice})
         Me.DataGridView.Location = New System.Drawing.Point(12, 35)
         Me.DataGridView.Name = "DataGridView"
         Me.DataGridView.ReadOnly = True
         Me.DataGridView.RowTemplate.Height = 24
-        Me.DataGridView.Size = New System.Drawing.Size(757, 312)
+        Me.DataGridView.Size = New System.Drawing.Size(739, 312)
         Me.DataGridView.TabIndex = 3
         '
         'ItemCode
@@ -93,11 +94,17 @@ Partial Class ChooseItem
         Me.InStock.Name = "InStock"
         Me.InStock.ReadOnly = True
         '
+        'ItemPrice
+        '
+        Me.ItemPrice.HeaderText = "Price "
+        Me.ItemPrice.Name = "ItemPrice"
+        Me.ItemPrice.ReadOnly = True
+        '
         'ChooseItem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(772, 433)
+        Me.ClientSize = New System.Drawing.Size(758, 433)
         Me.Controls.Add(Me.DataGridView)
         Me.Controls.Add(Me.btnNew)
         Me.Controls.Add(Me.btnCancel)
@@ -115,4 +122,5 @@ Partial Class ChooseItem
     Friend WithEvents ItemCode As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ItemName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents InStock As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ItemPrice As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
