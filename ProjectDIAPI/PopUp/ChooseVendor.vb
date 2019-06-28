@@ -9,10 +9,12 @@
         Data = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oBusinessPartners)
         rec = oObj.GetBPList(SAPbobsCOM.BoCardTypes.cSupplier)
 
-        'gridview harus diclear jika tidak akan menimpa jika dibuka tutup
+        'gridview harus diclear jika tidak maka data yang dibuka tadi masih ada
+        'jadi jika kita buka kembali data yang sama akan muncul namun berada dibawah data yang tadinya tidak diclear atau dapat dikatakan terganda/duplikasi
         btnChoose.Enabled = False
         DataGridViewListCustomer.Rows.Clear()
 
+        'looping data untuk table cell (item code, item name, dan price list)
         Do Until rec.EoF = True
             DataGridViewListCustomer.Rows.Add(1)
             DataGridViewListCustomer.Rows(DataGridViewListCustomer.RowCount - 1).Cells(0).Value = rec.Fields.Item(0).Value
@@ -45,6 +47,7 @@
         Me.Close()
     End Sub
 
+    'Method untuk mengambil data dari cell yang di-click kedalam string dan disimpan pada variabel e
     Public Sub getData(e As System.Windows.Forms.DataGridViewCellEventArgs)
         If e.RowIndex >= 0 Then
             Dim row = Me.DataGridViewListCustomer.Rows(e.RowIndex)
