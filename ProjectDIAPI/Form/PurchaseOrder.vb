@@ -1,11 +1,14 @@
 ﻿Public Class PurchaseOrder
-
+    'docTotal untuk variabel total transaksi
+    'oOrder untuk menerima semua data purchase order (OPOR)
+    'oOrderTemp adalah object data yg digunakan utk mengambil data yg ada di field form
     Public oOrder, oOrderTemp As SAPbobsCOM.Documents
 
     Private mode As Integer
     Dim docTotal
 
     Private Sub clearAll()
+        'clear semua field form
         TextBoxBPCode.Clear()
         TextBoxBPName.Clear()
         TextBoxDocNumber.Clear()
@@ -71,6 +74,7 @@
     End Sub
 
     Private Sub PurchaseOrder_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        'initial data
         rec = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
         oOrder = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseOrders)
         oOrderTemp = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseOrders)
@@ -105,6 +109,7 @@
         DateTimePickerDocDueDate.Value = oOrder.DocDueDate
         DateTimePickerTaxDate.Value = oOrder.TaxDate
         DataGridView.Rows.Clear()
+
         For i As Integer = 0 To oOrder.Lines.Count - 1
             DataGridView.Rows.Add(1)
             oOrder.Lines.SetCurrentLine(i)
@@ -149,6 +154,14 @@
         Try
             Select Case mode
                 Case 1
+                    'hitung total harga
+                    ' ambil data dari form
+                    ' add ke db dengan api yg sudah disediakan
+                    ' tampilkan err message jika ada
+                    ' form ke default
+                    ' mengambil ulang data purchase order
+                    ' set doc number keselanjutnya utk membantu mengetahui document number sekarang ketika waktu mau add 
+                    calTotal()
                     getData()
                     oOrderTemp.Add()
                     errorBox()
@@ -156,11 +169,13 @@
                     refreshFromDb()
                     TextBoxDocNumber.Text = oOrder.DocNum + 1
                 Case 2
+                    'find
                     'kita query berdasarkan doc number
                     oOrderTemp.GetByKey(TextBoxDocNumber.Text)
                     addData(oOrderTemp)
                     errorBox()
                 Case 3
+                    'update
                     oOrder.GetByKey(TextBoxDocNumber.Text)
                     getData()
                     oOrderTemp.Update()
@@ -199,6 +214,7 @@
                 item.ShowDialog()
                 row.Cells(0).Value = item.data.ItemCode
                 row.Cells(1).Value = item.data.ItemName
+                row.Cells(3).Value = item.data.PriceList.Price
             End If
 
         End If
@@ -206,6 +222,7 @@
     End Sub
 
     Private Sub calTotal()
+        'method utk hitung total nilai order
         docTotal = 0
         For i As Integer = 0 To DataGridView.Rows.Count - 1
             docTotal = docTotal + DataGridView.Rows(i).Cells(4).Value
@@ -213,6 +230,7 @@
     End Sub
 
     Private Sub DataGridView_CellValueChanged(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellValueChanged
+        'ketika cell di datagridview berubaha
         ' utk calculasi total di datagrid
         If e.RowIndex >= 0 Then
             Dim row = Me.DataGridView.Rows(e.RowIndex)
@@ -236,10 +254,6 @@
                 Dim ar As APInvoice = New APInvoice(oOrder)
                 ar.ShowDialog()
         End Select
-    End Sub
-
-    Private Sub DataGridView_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellContentClick
-
     End Sub
 
     Private Sub btnFind_Click(sender As System.Object, e As System.EventArgs) Handles btnFind.Click
@@ -281,11 +295,4 @@
         End If
     End Sub
 
-    Private Sub Label4_Click(sender As System.Object, e As System.EventArgs) Handles Label4.Click
-
-    End Sub
-
-    Private Sub TextBoxDocStatus_TextChanged(sender As System.Object, e As System.EventArgs) Handles TextBoxDocStatus.TextChanged
-
-    End Sub
 End Class
