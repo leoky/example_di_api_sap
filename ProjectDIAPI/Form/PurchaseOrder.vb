@@ -225,6 +225,7 @@
                 item.ShowDialog()
                 row.Cells(0).Value = item.data.ItemCode
                 row.Cells(1).Value = item.data.ItemName
+                row.Cells(2).Value = "1"
                 row.Cells(3).Value = item.data.PriceList.Price
             End If
 
