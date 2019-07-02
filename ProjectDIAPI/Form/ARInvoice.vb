@@ -1,15 +1,27 @@
-﻿Public Class ARInvoice
+﻿'ini ketika kita pilih 'copy form' di sales order maka akan pindahkan data ke form ARInvoice
+'semua field sama dengan sales order kecuali untuk field BaseEntry (oInvoice.Lines.BaseEntry)
+' - dimana berisi document number dari sales order 
+
+Public Class ARInvoice
     'ke db OINV
     Dim oInvoice As SAPbobsCOM.Documents
+    Dim baseEntry As String
 
+    ' Sub New adalah constructor dimana untuk menerima data sales order 
     Public Sub New(oInvoice As SAPbobsCOM.Documents)
         InitializeComponent()
         Me.oInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oInvoices)
         Me.oInvoice = oInvoice
+        baseEntry = oInvoice.DocNum
     End Sub
 
+    Private Sub refreshFromDB()
+        rec.DoQuery("SELECT DocNum  FROM OINV Order by DocNum DESC")
+    End Sub
+
+    'method untuk memasukkan data ke form
     Private Sub addData()
-        TextBoxDocNumber.Text = oInvoice.DocNum '//////
+        TextBoxDocNumber.Text = rec.Fields.Item(0).Value.ToString + 1
         TextBoxBPCode.Text = oInvoice.CardCode
         TextBoxBPName.Text = oInvoice.CardName
         TextBoxDocTotal.Text = oInvoice.DocTotal
@@ -47,6 +59,8 @@
     End Sub
 
     Private Sub ARInvoice_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        rec = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset)
+        refreshFromDB()
         addData()
     End Sub
 
@@ -59,15 +73,10 @@
         oInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oInvoices)
         oInvoice.CardCode = TextBoxBPCode.Text
 
-        Dim sNewObjCode As String
-
-        ' Get last added document number (the order that was added)
-        oCompany.GetNewObjectCode(sNewObjCode)
-
         For i As Integer = 0 To oInvoice.Lines.Count - 1
 
             oInvoice.Lines.SetCurrentLine(0)
-            oInvoice.Lines.BaseEntry = TextBoxDocNumber.Text
+            oInvoice.Lines.BaseEntry = baseEntry
             oInvoice.Lines.BaseLine = i
             oInvoice.Lines.BaseType = SAPbobsCOM.BoObjectTypes.oOrders
         Next
@@ -79,21 +88,5 @@
         Else
             MsgBox("inv Added to DataBase", MsgBoxStyle.Information, "Order Added")
         End If
-    End Sub
-
-    Private Sub Label1_Click(sender As System.Object, e As System.EventArgs) Handles Label1.Click
-
-    End Sub
-
-    Private Sub btnFind_Click(sender As System.Object, e As System.EventArgs)
-
-    End Sub
-
-    Private Sub btnAdd_Click(sender As System.Object, e As System.EventArgs)
-
-    End Sub
-
-    Private Sub btnUpdate_Click(sender As System.Object, e As System.EventArgs)
-
     End Sub
 End Class
