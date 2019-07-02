@@ -133,26 +133,48 @@
 
     End Sub
 
-    Private Sub getData()
+    Private Sub getData(Optional add As Boolean = False)
         'utk mengambil data dimana untuk dieksekusi ke database
         ' ini ke db ORDR
+        oOrderTemp = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseOrders)
+
         oOrderTemp.CardCode = TextBoxBPCode.Text
         oOrderTemp.CardName = TextBoxBPName.Text
         oOrderTemp.DocDate = DateTimePickerDocDate.Value
         oOrderTemp.DocDueDate = DateTimePickerDocDueDate.Value
         oOrderTemp.TaxDate = DateTimePickerTaxDate.Value
-        'utk .lines ini utk ke database OPOR
-        'dimana berisi tentang tiap transaksi dari Purchase Order
-        For i As Integer = 0 To DataGridView.Rows.Count - 1
-            If DataGridView.Rows(i).Cells(0).Value Then
-                oOrderTemp.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
-                oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
-                oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
-                oOrderTemp.Lines.Price = DataGridView.Rows(i).Cells(3).Value
-                oOrderTemp.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
-                oOrderTemp.Lines.Add()
-            End If
-        Next
+        'utk .lines ini utk ke database RDR1
+        'dimana berisi tentang tiap transaksi dari sales order
+
+        If mode = 1 Or add Then
+            For i As Integer = 0 To DataGridView.Rows.Count - 1
+                If Not DataGridView.Rows(i).Cells(0).Value = "" Then
+                    oOrderTemp.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
+                    oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
+                    oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
+                    oOrderTemp.Lines.Price = DataGridView.Rows(i).Cells(3).Value
+                    oOrderTemp.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
+                    oOrderTemp.Lines.Add()
+                End If
+            Next
+        Else
+            For i As Integer = 0 To DataGridView.Rows.Count - 1
+                If Not DataGridView.Rows(i).Cells(0).Value = "" Then
+
+                    oOrderTemp.Lines.SetCurrentLine(i)
+                    oOrderTemp.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
+                    oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
+                    oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
+                    oOrderTemp.Lines.Price = DataGridView.Rows(i).Cells(3).Value
+                    oOrderTemp.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
+                    'If DataGridView.Rows.Count >= oOrderTemp.Lines.Count + 1 Then
+                    '    oOrderTemp.Lines.Add()
+                    'End If
+                End If
+            Next
+            oOrderTemp.Lines.SetCurrentLine(0)
+        End If
+
         oOrderTemp.DocTotal = TextBoxDocTotal.Text
     End Sub
 
@@ -264,7 +286,8 @@
         Select Case ComboBoxCopyTo.SelectedIndex
             ' 0 = invoice
             Case 0
-                Dim ar As APInvoice = New APInvoice(oOrder)
+                getData(True)
+                Dim ar As APInvoice = New APInvoice(oOrderTemp, TextBoxDocNumber.Text)
                 ar.ShowDialog()
         End Select
     End Sub

@@ -340,7 +340,7 @@ Partial Class ARInvoice
         'LabelOrderNum
         '
         Me.LabelOrderNum.AutoSize = True
-        Me.LabelOrderNum.Location = New System.Drawing.Point(1210, 32)
+        Me.LabelOrderNum.Location = New System.Drawing.Point(1270, 45)
         Me.LabelOrderNum.Name = "LabelOrderNum"
         Me.LabelOrderNum.Size = New System.Drawing.Size(23, 25)
         Me.LabelOrderNum.TabIndex = 131

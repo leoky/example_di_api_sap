@@ -52,6 +52,7 @@ Partial Class APInvoice
         Me.btnChooseCustomer = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.LabelOrderNum = New System.Windows.Forms.Label()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -336,11 +337,21 @@ Partial Class APInvoice
         Me.Label1.TabIndex = 157
         Me.Label1.Text = "A/P Invoice"
         '
+        'LabelOrderNum
+        '
+        Me.LabelOrderNum.AutoSize = True
+        Me.LabelOrderNum.Location = New System.Drawing.Point(1261, 59)
+        Me.LabelOrderNum.Name = "LabelOrderNum"
+        Me.LabelOrderNum.Size = New System.Drawing.Size(23, 25)
+        Me.LabelOrderNum.TabIndex = 158
+        Me.LabelOrderNum.Text = "0"
+        '
         'APInvoice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1342, 1016)
+        Me.Controls.Add(Me.LabelOrderNum)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.btnNext)
@@ -403,4 +414,5 @@ Partial Class APInvoice
     Friend WithEvents btnChooseCustomer As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents LabelOrderNum As System.Windows.Forms.Label
 End Class
