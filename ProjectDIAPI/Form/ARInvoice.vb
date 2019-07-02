@@ -8,11 +8,12 @@ Public Class ARInvoice
     Dim baseEntry As String
 
     ' Sub New adalah constructor dimana untuk menerima data sales order 
-    Public Sub New(oInvoice As SAPbobsCOM.Documents)
+    Public Sub New(oInvoice As SAPbobsCOM.Documents, orderDocNum As Integer)
         InitializeComponent()
         Me.oInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oInvoices)
         Me.oInvoice = oInvoice
-        baseEntry = oInvoice.DocNum
+        baseEntry = orderDocNum
+        LabelOrderNum.Text = baseEntry
     End Sub
 
     Private Sub refreshFromDB()
@@ -73,15 +74,19 @@ Public Class ARInvoice
         oInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oInvoices)
         oInvoice.CardCode = TextBoxBPCode.Text
 
-        For i As Integer = 0 To oInvoice.Lines.Count - 1
-
-            oInvoice.Lines.SetCurrentLine(0)
-            oInvoice.Lines.BaseEntry = baseEntry
-            oInvoice.Lines.BaseLine = i
-            oInvoice.Lines.BaseType = SAPbobsCOM.BoObjectTypes.oOrders
+        For i As Integer = 0 To DataGridView.RowCount - 1
+            If Not DataGridView.Rows(i).Cells(0).Value = "" Then
+                oInvoice.Lines.BaseEntry = baseEntry
+                oInvoice.Lines.BaseLine = i
+                oInvoice.Lines.BaseType = SAPbobsCOM.BoObjectTypes.oOrders
+                oInvoice.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
+                oInvoice.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
+                oInvoice.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
+                oInvoice.Lines.Add()
+            End If
         Next
-
         lRetCode = oInvoice.Add()
+
         oCompany.GetLastError(lErrCode, sErrMsg)
         If lRetCode <> 0 Then ' If the addition failed
             MsgBox(lErrCode & " " & sErrMsg) ' Display error message

@@ -52,6 +52,7 @@ Partial Class ARInvoice
         Me.btnChooseCustomer = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.LabelOrderNum = New System.Windows.Forms.Label()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -96,7 +97,7 @@ Partial Class ARInvoice
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemCode, Me.ItemName, Me.Quantity, Me.UnitPrice, Me.Total})
         Me.DataGridView.Location = New System.Drawing.Point(13, 374)
-        Me.DataGridView.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DataGridView.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView.Name = "DataGridView"
         Me.DataGridView.RowTemplate.Height = 24
         Me.DataGridView.Size = New System.Drawing.Size(1280, 380)
@@ -127,7 +128,7 @@ Partial Class ARInvoice
         Me.ComboBoxCopyTo.FormattingEnabled = True
         Me.ComboBoxCopyTo.Items.AddRange(New Object() {"A / R Invoice"})
         Me.ComboBoxCopyTo.Location = New System.Drawing.Point(1014, 934)
-        Me.ComboBoxCopyTo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ComboBoxCopyTo.Margin = New System.Windows.Forms.Padding(4)
         Me.ComboBoxCopyTo.Name = "ComboBoxCopyTo"
         Me.ComboBoxCopyTo.Size = New System.Drawing.Size(252, 32)
         Me.ComboBoxCopyTo.TabIndex = 128
@@ -136,7 +137,7 @@ Partial Class ARInvoice
         '
         Me.TextBoxDocStatus.Enabled = False
         Me.TextBoxDocStatus.Location = New System.Drawing.Point(930, 312)
-        Me.TextBoxDocStatus.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxDocStatus.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxDocStatus.Name = "TextBoxDocStatus"
         Me.TextBoxDocStatus.Size = New System.Drawing.Size(363, 29)
         Me.TextBoxDocStatus.TabIndex = 127
@@ -154,7 +155,7 @@ Partial Class ARInvoice
         'TextBoxDocTotal
         '
         Me.TextBoxDocTotal.Location = New System.Drawing.Point(835, 778)
-        Me.TextBoxDocTotal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxDocTotal.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxDocTotal.Name = "TextBoxDocTotal"
         Me.TextBoxDocTotal.Size = New System.Drawing.Size(430, 29)
         Me.TextBoxDocTotal.TabIndex = 125
@@ -173,7 +174,7 @@ Partial Class ARInvoice
         '
         Me.TextBoxDocNumber.Enabled = False
         Me.TextBoxDocNumber.Location = New System.Drawing.Point(178, 149)
-        Me.TextBoxDocNumber.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxDocNumber.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxDocNumber.Name = "TextBoxDocNumber"
         Me.TextBoxDocNumber.Size = New System.Drawing.Size(177, 29)
         Me.TextBoxDocNumber.TabIndex = 123
@@ -222,7 +223,7 @@ Partial Class ARInvoice
         '
         Me.DateTimePickerTaxDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePickerTaxDate.Location = New System.Drawing.Point(930, 254)
-        Me.DateTimePickerTaxDate.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.DateTimePickerTaxDate.Margin = New System.Windows.Forms.Padding(6)
         Me.DateTimePickerTaxDate.Name = "DateTimePickerTaxDate"
         Me.DateTimePickerTaxDate.Size = New System.Drawing.Size(363, 29)
         Me.DateTimePickerTaxDate.TabIndex = 113
@@ -232,7 +233,7 @@ Partial Class ARInvoice
         '
         Me.DateTimePickerDocDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePickerDocDueDate.Location = New System.Drawing.Point(930, 206)
-        Me.DateTimePickerDocDueDate.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.DateTimePickerDocDueDate.Margin = New System.Windows.Forms.Padding(6)
         Me.DateTimePickerDocDueDate.Name = "DateTimePickerDocDueDate"
         Me.DateTimePickerDocDueDate.Size = New System.Drawing.Size(363, 29)
         Me.DateTimePickerDocDueDate.TabIndex = 112
@@ -242,7 +243,7 @@ Partial Class ARInvoice
         '
         Me.DateTimePickerDocDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePickerDocDate.Location = New System.Drawing.Point(930, 160)
-        Me.DateTimePickerDocDate.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.DateTimePickerDocDate.Margin = New System.Windows.Forms.Padding(6)
         Me.DateTimePickerDocDate.Name = "DateTimePickerDocDate"
         Me.DateTimePickerDocDate.Size = New System.Drawing.Size(363, 29)
         Me.DateTimePickerDocDate.TabIndex = 111
@@ -281,7 +282,7 @@ Partial Class ARInvoice
         'TextBoxBPName
         '
         Me.TextBoxBPName.Location = New System.Drawing.Point(176, 253)
-        Me.TextBoxBPName.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.TextBoxBPName.Margin = New System.Windows.Forms.Padding(6)
         Me.TextBoxBPName.Name = "TextBoxBPName"
         Me.TextBoxBPName.Size = New System.Drawing.Size(180, 29)
         Me.TextBoxBPName.TabIndex = 107
@@ -299,7 +300,7 @@ Partial Class ARInvoice
         'TextBoxBPCode
         '
         Me.TextBoxBPCode.Location = New System.Drawing.Point(176, 206)
-        Me.TextBoxBPCode.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.TextBoxBPCode.Margin = New System.Windows.Forms.Padding(6)
         Me.TextBoxBPCode.Name = "TextBoxBPCode"
         Me.TextBoxBPCode.Size = New System.Drawing.Size(180, 29)
         Me.TextBoxBPCode.TabIndex = 105
@@ -309,7 +310,7 @@ Partial Class ARInvoice
         Me.btnChooseCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnChooseCustomer.ForeColor = System.Drawing.SystemColors.ActiveBorder
         Me.btnChooseCustomer.Location = New System.Drawing.Point(364, 206)
-        Me.btnChooseCustomer.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.btnChooseCustomer.Margin = New System.Windows.Forms.Padding(6)
         Me.btnChooseCustomer.Name = "btnChooseCustomer"
         Me.btnChooseCustomer.Size = New System.Drawing.Size(29, 30)
         Me.btnChooseCustomer.TabIndex = 104
@@ -336,11 +337,21 @@ Partial Class ARInvoice
         Me.Label1.TabIndex = 130
         Me.Label1.Text = "A/R Invoice"
         '
+        'LabelOrderNum
+        '
+        Me.LabelOrderNum.AutoSize = True
+        Me.LabelOrderNum.Location = New System.Drawing.Point(1210, 32)
+        Me.LabelOrderNum.Name = "LabelOrderNum"
+        Me.LabelOrderNum.Size = New System.Drawing.Size(23, 25)
+        Me.LabelOrderNum.TabIndex = 131
+        Me.LabelOrderNum.Text = "0"
+        '
         'ARInvoice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 24.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1342, 1016)
+        Me.Controls.Add(Me.LabelOrderNum)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.DataGridView)
@@ -366,7 +377,7 @@ Partial Class ARInvoice
         Me.Controls.Add(Me.TextBoxBPCode)
         Me.Controls.Add(Me.btnChooseCustomer)
         Me.Controls.Add(Me.Label2)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "ARInvoice"
         Me.Text = "ARInvoice"
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -404,4 +415,5 @@ Partial Class ARInvoice
     Friend WithEvents btnChooseCustomer As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents LabelOrderNum As System.Windows.Forms.Label
 End Class

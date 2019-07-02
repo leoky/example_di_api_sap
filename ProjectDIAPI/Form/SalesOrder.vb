@@ -39,9 +39,11 @@
         DataGridView.Rows.Clear()
     End Sub
 
-    Private Sub getData()
+    Private Sub getData(Optional add As Boolean = False)
         'utk mengambil data dimana untuk dieksekusi ke database
         ' ini ke db ORDR
+        oOrderTemp = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oOrders)
+
         oOrderTemp.CardCode = TextBoxBPCode.Text
         oOrderTemp.CardName = TextBoxBPName.Text
         oOrderTemp.DocDate = DateTimePickerDocDate.Value
@@ -50,9 +52,9 @@
         'utk .lines ini utk ke database RDR1
         'dimana berisi tentang tiap transaksi dari sales order
 
-        If mode = 1 Then
+        If mode = 1 Or add Then
             For i As Integer = 0 To DataGridView.Rows.Count - 1
-                If DataGridView.Rows(i).Cells(0).Value Then
+                If Not DataGridView.Rows(i).Cells(0).Value = "" Then
                     oOrderTemp.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
                     oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
                     oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
@@ -63,7 +65,7 @@
             Next
         Else
             For i As Integer = 0 To DataGridView.Rows.Count - 1
-                If DataGridView.Rows(i).Cells(0).Value Then
+                If Not DataGridView.Rows(i).Cells(0).Value = "" Then
 
                     oOrderTemp.Lines.SetCurrentLine(i)
                     oOrderTemp.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
@@ -146,6 +148,12 @@
         TextBoxBPName.Text = oOrder.CardName
         TextBoxDocTotal.Text = oOrder.DocTotal
         TextBoxDocStatus.Text = oOrder.DocumentStatus
+        'ketika document statusnya = 1 (close)
+        If oOrder.DocumentStatus = 1 Then
+            ComboBoxCopyTo.Enabled = False
+        Else
+            ComboBoxCopyTo.Enabled = True
+        End If
 
         DateTimePickerDocDate.Value = oOrder.DocDate
         DateTimePickerDocDueDate.Value = oOrder.DocDueDate
@@ -207,9 +215,10 @@
     Private Sub btnNext_Click(sender As System.Object, e As System.EventArgs) Handles btnNext.Click
         updatenextprevious()
         If oOrder.Browser.EoF = False Then
+            addData(oOrder)
             updateMode(0, False)
             oOrder.Browser.MoveNext()
-            addData(oOrder)
+
 
         End If
     End Sub
@@ -306,7 +315,8 @@
         Select Case ComboBoxCopyTo.SelectedIndex
             ' 0 = invoice
             Case 0
-                Dim ar As ARInvoice = New ARInvoice(oOrder)
+                getData(True)
+                Dim ar As ARInvoice = New ARInvoice(oOrderTemp, TextBoxDocNumber.Text)
                 ar.ShowDialog()
         End Select
     End Sub
