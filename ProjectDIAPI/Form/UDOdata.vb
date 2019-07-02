@@ -174,7 +174,6 @@
         GC.Collect()
         oUserFieldsMD = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oUserFields)
 
-*
         '// Setting the Field's properties
 
         oUserFieldsMD.TableName = "@SM_MOR1"
