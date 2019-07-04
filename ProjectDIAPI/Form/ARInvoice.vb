@@ -25,22 +25,19 @@ Public Class ARInvoice
         TextBoxDocNumber.Text = rec.Fields.Item(0).Value.ToString + 1
         TextBoxBPCode.Text = oInvoice.CardCode
         TextBoxBPName.Text = oInvoice.CardName
-        TextBoxDocTotal.Text = oInvoice.DocTotal
+
         TextBoxDocStatus.Text = oInvoice.EDocStatus
         DateTimePickerDocDate.Value = oInvoice.DocDate
         DateTimePickerDocDueDate.Value = oInvoice.DocDueDate
         DateTimePickerTaxDate.Value = oInvoice.TaxDate
 
         For i As Integer = 0 To oInvoice.Lines.Count - 1
-
             DataGridView.Rows.Add(1)
             oInvoice.Lines.SetCurrentLine(i)
             DataGridView.Rows(i).Cells(0).Value = oInvoice.Lines.ItemCode
             DataGridView.Rows(i).Cells(1).Value = oInvoice.Lines.ItemDescription
             DataGridView.Rows(i).Cells(2).Value = oInvoice.Lines.Quantity
             DataGridView.Rows(i).Cells(3).Value = oInvoice.Lines.Price
-            DataGridView.Rows(i).Cells(4).Value = oInvoice.Lines.LineTotal
-            DataGridView.Rows(i).Cells(4).Value = oInvoice.Lines.Quantity * oInvoice.Lines.Price
 
         Next
     End Sub
@@ -50,7 +47,6 @@ Public Class ARInvoice
         TextBoxBPCode.Clear()
         TextBoxBPName.Clear()
         TextBoxDocNumber.Clear()
-        TextBoxDocTotal.Clear()
 
         DateTimePickerDocDate.Value = Now
         DateTimePickerDocDueDate.Value = Now
@@ -73,7 +69,9 @@ Public Class ARInvoice
     Private Sub BtnOK_Click(sender As System.Object, e As System.EventArgs) Handles BtnOK.Click
         oInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oInvoices)
         oInvoice.CardCode = TextBoxBPCode.Text
-
+        'base entry = document number dari sales order
+        'base line = urutan item
+        'base type = tipe order (sales, purchase , dll)
         For i As Integer = 0 To DataGridView.RowCount - 1
             If Not DataGridView.Rows(i).Cells(0).Value = "" Then
                 oInvoice.Lines.BaseEntry = baseEntry
@@ -81,7 +79,6 @@ Public Class ARInvoice
                 oInvoice.Lines.BaseType = SAPbobsCOM.BoObjectTypes.oOrders
                 oInvoice.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
                 oInvoice.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
-                oInvoice.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
                 oInvoice.Lines.Add()
             End If
         Next

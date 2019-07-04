@@ -14,7 +14,6 @@
         TextBoxBPCode.Clear()
         TextBoxBPName.Clear()
         TextBoxDocNumber.Clear()
-        TextBoxDocTotal.Clear()
 
         DateTimePickerDocDate.Value = Now
         DateTimePickerDocDueDate.Value = Now
@@ -110,7 +109,6 @@
         TextBoxDocNumber.Text = oOrder.DocNum
         TextBoxBPCode.Text = oOrder.CardCode
         TextBoxBPName.Text = oOrder.CardName
-        TextBoxDocTotal.Text = oOrder.DocTotal
         TextBoxDocStatus.Text = oOrder.DocumentStatus
 
         DateTimePickerDocDate.Value = oOrder.DocDate
@@ -125,9 +123,6 @@
             DataGridView.Rows(i).Cells(1).Value = oOrder.Lines.ItemDescription
             DataGridView.Rows(i).Cells(2).Value = oOrder.Lines.Quantity
             DataGridView.Rows(i).Cells(3).Value = oOrder.Lines.Price
-            DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.LineTotal
-            DataGridView.Rows(i).Cells(4).Value = oOrder.Lines.Quantity * oOrder.Lines.Price
-
         Next
         oOrder.Lines.SetCurrentLine(0)
 
@@ -153,7 +148,6 @@
                     oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
                     oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
                     oOrderTemp.Lines.Price = DataGridView.Rows(i).Cells(3).Value
-                    oOrderTemp.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
                     oOrderTemp.Lines.Add()
                 End If
             Next
@@ -166,16 +160,11 @@
                     oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
                     oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
                     oOrderTemp.Lines.Price = DataGridView.Rows(i).Cells(3).Value
-                    oOrderTemp.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
-                    'If DataGridView.Rows.Count >= oOrderTemp.Lines.Count + 1 Then
-                    '    oOrderTemp.Lines.Add()
-                    'End If
                 End If
             Next
             oOrderTemp.Lines.SetCurrentLine(0)
         End If
 
-        oOrderTemp.DocTotal = TextBoxDocTotal.Text
     End Sub
 
 
@@ -191,7 +180,6 @@
                     ' form ke default
                     ' mengambil ulang data purchase order
                     ' set doc number keselanjutnya utk membantu mengetahui document number sekarang ketika waktu mau add 
-                    calTotal()
                     getData()
                     oOrderTemp.Add()
                     errorBox()
@@ -255,31 +243,8 @@
 
     End Sub
 
-    Private Sub calTotal()
-        'method utk hitung total nilai order
-        '// untuk menghitung docTotal
-        docTotal = 0
-        For i As Integer = 0 To DataGridView.Rows.Count - 1
-            docTotal = docTotal + DataGridView.Rows(i).Cells(4).Value
-        Next
-    End Sub
-
     Private Sub DataGridView_CellValueChanged(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView.CellValueChanged
         'ketika cell di datagridview berubaha
-        ' utk calculasi total di datagrid
-        If e.RowIndex >= 0 Then
-            Dim row = Me.DataGridView.Rows(e.RowIndex)
-
-            If row.Cells(2).Value >= 0 And row.Cells(3).Value >= 0 Then
-                row.Cells(4).Value = row.Cells(2).Value * row.Cells(3).Value
-            End If
-
-            If row.Cells(4).Value Then
-                calTotal()
-                TextBoxDocTotal.Text = docTotal
-            End If
-
-        End If
     End Sub
 
     Private Sub ComboBoxCopyTo_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ComboBoxCopyTo.SelectedIndexChanged
@@ -317,6 +282,7 @@
             updateMode(0, False)
             oOrder.Browser.MovePrevious()
             addData(oOrder)
+
         End If
     End Sub
 

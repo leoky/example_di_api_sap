@@ -42,19 +42,16 @@ Partial Class SalesOrder
         Me.btnPrevious = New System.Windows.Forms.Button()
         Me.btnNext = New System.Windows.Forms.Button()
         Me.DataGridView = New System.Windows.Forms.DataGridView()
-        Me.ItemCode = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnitPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TextBoxDocNumber = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBoxDocTotal = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.TextBoxDocStatus = New System.Windows.Forms.TextBox()
         Me.ComboBoxCopyTo = New System.Windows.Forms.ComboBox()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.ItemCode = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.ItemName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Quantity = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -84,7 +81,7 @@ Partial Class SalesOrder
         Me.btnChooseCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnChooseCustomer.ForeColor = System.Drawing.SystemColors.ActiveBorder
         Me.btnChooseCustomer.Location = New System.Drawing.Point(282, 165)
-        Me.btnChooseCustomer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnChooseCustomer.Margin = New System.Windows.Forms.Padding(4)
         Me.btnChooseCustomer.Name = "btnChooseCustomer"
         Me.btnChooseCustomer.Size = New System.Drawing.Size(21, 20)
         Me.btnChooseCustomer.TabIndex = 68
@@ -93,7 +90,7 @@ Partial Class SalesOrder
         'TextBoxBPCode
         '
         Me.TextBoxBPCode.Location = New System.Drawing.Point(143, 165)
-        Me.TextBoxBPCode.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxBPCode.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxBPCode.Name = "TextBoxBPCode"
         Me.TextBoxBPCode.Size = New System.Drawing.Size(132, 22)
         Me.TextBoxBPCode.TabIndex = 69
@@ -111,7 +108,7 @@ Partial Class SalesOrder
         'TextBoxBPName
         '
         Me.TextBoxBPName.Location = New System.Drawing.Point(143, 194)
-        Me.TextBoxBPName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TextBoxBPName.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBoxBPName.Name = "TextBoxBPName"
         Me.TextBoxBPName.Size = New System.Drawing.Size(132, 22)
         Me.TextBoxBPName.TabIndex = 71
@@ -150,7 +147,7 @@ Partial Class SalesOrder
         '
         Me.DateTimePickerDocDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePickerDocDate.Location = New System.Drawing.Point(685, 100)
-        Me.DateTimePickerDocDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DateTimePickerDocDate.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePickerDocDate.Name = "DateTimePickerDocDate"
         Me.DateTimePickerDocDate.Size = New System.Drawing.Size(265, 22)
         Me.DateTimePickerDocDate.TabIndex = 75
@@ -160,7 +157,7 @@ Partial Class SalesOrder
         '
         Me.DateTimePickerDocDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePickerDocDueDate.Location = New System.Drawing.Point(685, 127)
-        Me.DateTimePickerDocDueDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DateTimePickerDocDueDate.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePickerDocDueDate.Name = "DateTimePickerDocDueDate"
         Me.DateTimePickerDocDueDate.Size = New System.Drawing.Size(265, 22)
         Me.DateTimePickerDocDueDate.TabIndex = 76
@@ -170,7 +167,7 @@ Partial Class SalesOrder
         '
         Me.DateTimePickerTaxDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePickerTaxDate.Location = New System.Drawing.Point(685, 155)
-        Me.DateTimePickerTaxDate.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DateTimePickerTaxDate.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePickerTaxDate.Name = "DateTimePickerTaxDate"
         Me.DateTimePickerTaxDate.Size = New System.Drawing.Size(265, 22)
         Me.DateTimePickerTaxDate.TabIndex = 77
@@ -242,46 +239,12 @@ Partial Class SalesOrder
         'DataGridView
         '
         Me.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemCode, Me.ItemName, Me.Quantity, Me.UnitPrice, Me.Total})
+        Me.DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ItemCode, Me.ItemName, Me.Quantity, Me.UnitPrice})
         Me.DataGridView.Location = New System.Drawing.Point(20, 249)
         Me.DataGridView.Name = "DataGridView"
         Me.DataGridView.RowTemplate.Height = 24
         Me.DataGridView.Size = New System.Drawing.Size(931, 253)
         Me.DataGridView.TabIndex = 92
-        '
-        'ItemCode
-        '
-        Me.ItemCode.HeaderText = "Item No"
-        Me.ItemCode.Name = "ItemCode"
-        '
-        'ItemName
-        '
-        Me.ItemName.HeaderText = "Item Description"
-        Me.ItemName.MinimumWidth = 200
-        Me.ItemName.Name = "ItemName"
-        Me.ItemName.Width = 200
-        '
-        'Quantity
-        '
-        Me.Quantity.HeaderText = "Quantity"
-        Me.Quantity.Name = "Quantity"
-        Me.Quantity.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Quantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'UnitPrice
-        '
-        Me.UnitPrice.HeaderText = "Unit Price"
-        Me.UnitPrice.Name = "UnitPrice"
-        Me.UnitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.UnitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Total
-        '
-        Me.Total.HeaderText = "Total"
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
-        Me.Total.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Total.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'Label7
         '
@@ -299,22 +262,6 @@ Partial Class SalesOrder
         Me.TextBoxDocNumber.Name = "TextBoxDocNumber"
         Me.TextBoxDocNumber.Size = New System.Drawing.Size(129, 22)
         Me.TextBoxDocNumber.TabIndex = 94
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(552, 517)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(40, 17)
-        Me.Label8.TabIndex = 95
-        Me.Label8.Text = "Total"
-        '
-        'TextBoxDocTotal
-        '
-        Me.TextBoxDocTotal.Location = New System.Drawing.Point(639, 517)
-        Me.TextBoxDocTotal.Name = "TextBoxDocTotal"
-        Me.TextBoxDocTotal.Size = New System.Drawing.Size(313, 22)
-        Me.TextBoxDocTotal.TabIndex = 96
         '
         'Label9
         '
@@ -353,17 +300,41 @@ Partial Class SalesOrder
         Me.Label10.TabIndex = 101
         Me.Label10.Text = "Copy To"
         '
+        'ItemCode
+        '
+        Me.ItemCode.HeaderText = "Item No"
+        Me.ItemCode.Name = "ItemCode"
+        '
+        'ItemName
+        '
+        Me.ItemName.HeaderText = "Item Description"
+        Me.ItemName.MinimumWidth = 200
+        Me.ItemName.Name = "ItemName"
+        Me.ItemName.Width = 200
+        '
+        'Quantity
+        '
+        Me.Quantity.HeaderText = "Quantity"
+        Me.Quantity.Name = "Quantity"
+        Me.Quantity.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Quantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'UnitPrice
+        '
+        Me.UnitPrice.HeaderText = "Unit Price"
+        Me.UnitPrice.Name = "UnitPrice"
+        Me.UnitPrice.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.UnitPrice.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
         'SalesOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(987, 638)
+        Me.ClientSize = New System.Drawing.Size(983, 646)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.ComboBoxCopyTo)
         Me.Controls.Add(Me.TextBoxDocStatus)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.TextBoxDocTotal)
-        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.TextBoxDocNumber)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.DataGridView)
@@ -386,7 +357,7 @@ Partial Class SalesOrder
         Me.Controls.Add(Me.btnChooseCustomer)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "SalesOrder"
         Me.Text = "SalesOrder"
         CType(Me.DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -414,17 +385,14 @@ Partial Class SalesOrder
     Friend WithEvents btnPrevious As System.Windows.Forms.Button
     Friend WithEvents btnNext As System.Windows.Forms.Button
     Friend WithEvents DataGridView As System.Windows.Forms.DataGridView
-    Friend WithEvents ItemCode As System.Windows.Forms.DataGridViewButtonColumn
-    Friend WithEvents ItemName As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Quantity As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents UnitPrice As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Total As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents TextBoxDocNumber As System.Windows.Forms.TextBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents TextBoxDocTotal As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents TextBoxDocStatus As System.Windows.Forms.TextBox
     Friend WithEvents ComboBoxCopyTo As System.Windows.Forms.ComboBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents ItemCode As System.Windows.Forms.DataGridViewButtonColumn
+    Friend WithEvents ItemName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Quantity As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents UnitPrice As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

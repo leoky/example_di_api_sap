@@ -1,10 +1,13 @@
-﻿Public Class APInvoice
+﻿'ini ketika kita pilih 'copy form' di purchase order maka akan pindahkan data ke form APInvoice
+'semua field sama dengan purchase order kecuali untuk field BaseEntry (oInvoice.Lines.BaseEntry)
+' - dimana berisi document number dari purchase order 
+Public Class APInvoice
 
-    'ke db OINV
+    'ke db OPCH
     Dim oPurchaseInvoice As SAPbobsCOM.Documents
     Dim baseEntry As String
 
-    ' Sub New adalah constructor dimana untuk menerima data sales order 
+    ' Sub New adalah constructor dimana untuk menerima data purchase order 
     Public Sub New(oPurchaseInvoice As SAPbobsCOM.Documents, orderDocNum As Integer)
         InitializeComponent()
         Me.oPurchaseInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseInvoices)
@@ -22,7 +25,6 @@
         TextBoxDocNumber.Text = rec.Fields.Item(0).Value.ToString + 1
         TextBoxBPCode.Text = oPurchaseInvoice.CardCode
         TextBoxBPName.Text = oPurchaseInvoice.CardName
-        TextBoxDocTotal.Text = oPurchaseInvoice.DocTotal
         TextBoxDocStatus.Text = oPurchaseInvoice.EDocStatus
         DateTimePickerDocDate.Value = oPurchaseInvoice.DocDate
         DateTimePickerDocDueDate.Value = oPurchaseInvoice.DocDueDate
@@ -36,8 +38,6 @@
             DataGridView.Rows(i).Cells(1).Value = oPurchaseInvoice.Lines.ItemDescription
             DataGridView.Rows(i).Cells(2).Value = oPurchaseInvoice.Lines.Quantity
             DataGridView.Rows(i).Cells(3).Value = oPurchaseInvoice.Lines.Price
-            DataGridView.Rows(i).Cells(4).Value = oPurchaseInvoice.Lines.LineTotal
-            DataGridView.Rows(i).Cells(4).Value = oPurchaseInvoice.Lines.Quantity * oPurchaseInvoice.Lines.Price
 
         Next
     End Sub
@@ -47,7 +47,6 @@
         TextBoxBPCode.Clear()
         TextBoxBPName.Clear()
         TextBoxDocNumber.Clear()
-        TextBoxDocTotal.Clear()
 
         DateTimePickerDocDate.Value = Now
         DateTimePickerDocDueDate.Value = Now
@@ -68,9 +67,12 @@
     End Sub
 
     Private Sub BtnOK_Click(sender As System.Object, e As System.EventArgs) Handles BtnOK.Click
+        'kita mengabil data dari form bukan dari data yg diterima order
         oPurchaseInvoice = oCompany.GetBusinessObject(SAPbobsCOM.BoObjectTypes.oPurchaseInvoices)
         oPurchaseInvoice.CardCode = TextBoxBPCode.Text
-
+        'base entry = document number dari purchase order
+        'base line = urutan item
+        'base type = tipe order (sales, purchase , dll)
         For i As Integer = 0 To DataGridView.RowCount - 1
             If Not DataGridView.Rows(i).Cells(0).Value = "" Then
                 oPurchaseInvoice.Lines.BaseEntry = baseEntry
@@ -78,7 +80,6 @@
                 oPurchaseInvoice.Lines.BaseType = SAPbobsCOM.BoObjectTypes.oPurchaseOrders
                 oPurchaseInvoice.Lines.ItemCode = DataGridView.Rows(i).Cells(0).Value
                 oPurchaseInvoice.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
-                oPurchaseInvoice.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
                 oPurchaseInvoice.Lines.Add()
             End If
         Next
