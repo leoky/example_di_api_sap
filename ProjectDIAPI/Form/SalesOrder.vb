@@ -70,7 +70,6 @@
                     oOrderTemp.Lines.ItemDescription = DataGridView.Rows(i).Cells(1).Value
                     oOrderTemp.Lines.Quantity = DataGridView.Rows(i).Cells(2).Value
                     oOrderTemp.Lines.Price = DataGridView.Rows(i).Cells(3).Value
-                    oOrderTemp.Lines.LineTotal = DataGridView.Rows(i).Cells(4).Value
                 End If
             Next
             oOrderTemp.Lines.SetCurrentLine(0)
@@ -200,8 +199,6 @@
             addData(oOrder)
             updateMode(0, False)
             oOrder.Browser.MoveNext()
-
-
         End If
     End Sub
 
